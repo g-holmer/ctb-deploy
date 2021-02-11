@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -6,13 +6,23 @@ import { ThemeProvider } from '@material-ui/styles';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { AuthContext } from '../contexts/AuthContext';
+import { useRouter } from 'next/router';
 interface Props {}
 
 const signIn = (props: Props) => {
+  const { login, currentUser }: any = useContext(AuthContext);
+  const router = useRouter();
+  console.log(currentUser); 
+
+
   const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  async function onSubmit(data) {
+    try {
+      await login(data.email, data.password);
+      router.push('/dashboard');
+    } catch {}
+  }
   const darkTheme = createMuiTheme({
     palette: {
       primary: {
@@ -39,7 +49,7 @@ const signIn = (props: Props) => {
           <Typography style={{ textAlign: 'center' }}>
             No user account?
           </Typography>
-          <Link href="/signUp">
+          <Link href="/signup">
             <a>Please register here</a>
           </Link>
         </RedirectMessage>
@@ -59,20 +69,21 @@ const signIn = (props: Props) => {
               style={{ marginTop: '10px' }}
               placeholder="E-mail"
               name="email"
-              inputRef={register}
+              inputRef={register({ required: true })}
             />
 
             <TextField
               style={{ marginTop: '10px' }}
               placeholder="Password"
               name="password"
+              type="password"
               inputRef={register({ required: true })}
             />
 
             {errors.exampleRequired && <span>This field is required</span>}
             <RedirectMessage>
               <Typography>Forgot your password?</Typography>
-              <Link href="/signUp">
+              <Link href="/signup">
                 <a>Click Here</a>
               </Link>
             </RedirectMessage>

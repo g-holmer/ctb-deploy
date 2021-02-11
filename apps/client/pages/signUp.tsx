@@ -6,14 +6,21 @@ import { AuthContext } from '../contexts/AuthContext';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 interface Props {}
 
-const signIn = (props: Props) => {
+const signUp = (props: Props) => {
+  const router = useRouter();
+
   const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-  const { signUp }: any = useContext(AuthContext);
+  const { signup }: any = useContext(AuthContext);
+
+  async function onSubmit(data) {
+    try {
+      await signup(data.email, data.password);
+      router.push('/signin');
+    } catch {}
+  }
 
   const darkTheme = createMuiTheme({
     palette: {
@@ -44,7 +51,7 @@ const signIn = (props: Props) => {
           <Typography style={{ textAlign: 'center' }}>
             Already have an account?
           </Typography>
-          <Link href="/signIn">
+          <Link href="/signin">
             <a>Login here</a>
           </Link>
         </RedirectMessage>
@@ -64,13 +71,14 @@ const signIn = (props: Props) => {
               style={{ marginTop: '10px' }}
               placeholder="E-mail"
               name="email"
-              inputRef={register}
+              inputRef={register({ required: true })}
             />
 
             <TextField
               style={{ marginTop: '10px' }}
               placeholder="Password"
               name="password"
+              type="password"
               inputRef={register({ required: true })}
             />
 
@@ -116,4 +124,4 @@ const FormWrapper = styled(Box)`
   display: flex;
   justify-content: space-evenly;
 `;
-export default signIn;
+export default signUp;

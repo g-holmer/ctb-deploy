@@ -11,10 +11,15 @@ interface Props {
 export const AuthContextProvider = (props: Props) => {
   const [currentUser, setCurrentUser] = useState<any>(null);
 
-  const signUp = (email, password) => {
+  const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
-
+  const login = (email, password) => {
+    return auth.signInWithEmailAndPassword(email, password);
+  };
+  const logout = () => {
+    return auth.signOut();
+  };
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -22,7 +27,9 @@ export const AuthContextProvider = (props: Props) => {
     return unsubscribe;
   }, []);
   return (
-    <AuthContext.Provider value={{ currentUser, setCurrentUser, signUp }}>
+    <AuthContext.Provider
+      value={{ currentUser, setCurrentUser, signup, login, logout }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
