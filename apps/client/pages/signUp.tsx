@@ -38,7 +38,7 @@ const signUp = (props: Props) => {
 
   const router = useRouter();
 
-  const { register, handleSubmit, watch, errors } = useForm({
+  const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(registerSchema),
   });
   const { signup }: any = useContext(AuthContext);
@@ -53,15 +53,12 @@ const signUp = (props: Props) => {
   const darkTheme = createMuiTheme({
     palette: {
       primary: {
-        // light: will be calculated from palette.primary.main,
         main: '#da920b',
-        // dark: will be calculated from palette.primary.main,
-        // contrastText: will be calculated to contrast with palette.primary.main
       },
       secondary: {
         light: '#0066ff',
         main: '#0044ff',
-        // dark: will be calculated from palette.secondary.main,
+
         contrastText: '#ffcc00',
       },
     },

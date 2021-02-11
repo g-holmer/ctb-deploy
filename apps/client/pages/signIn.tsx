@@ -25,7 +25,7 @@ const signIn = (props: Props) => {
       .required('This field is required.'),
   });
 
-  const { login, currentUser }: any = useContext(AuthContext);
+  const { login }: any = useContext(AuthContext);
   const router = useRouter();
 
   const { register, handleSubmit, watch, errors } = useForm({

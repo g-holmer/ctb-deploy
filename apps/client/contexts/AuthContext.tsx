@@ -7,8 +7,10 @@ export const AuthContext = React.createContext({});
 interface Props {
   children: any;
 }
+import { useRouter } from 'next/router';
 
 export const AuthContextProvider = (props: Props) => {
+  const router = useRouter();
   const [currentUser, setCurrentUser] = useState<any>(null);
 
   const signup = (email, password) => {
