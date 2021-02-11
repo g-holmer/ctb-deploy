@@ -2,21 +2,35 @@ import React, { useContext } from 'react';
 import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { AuthContext } from '../contexts/AuthContext';
 import { useRouter } from 'next/router';
+import * as Yup from 'yup';
+
 interface Props {}
 
 const signIn = (props: Props) => {
+  const loginSchema = Yup.object().shape({
+    email: Yup.string()
+      .email('Wrong email format')
+      .min(3, 'Minimum 3 symbols')
+      .max(50, 'Maximum 50 symbols')
+      .required('This field is required.'),
+    password: Yup.string()
+      .min(8, 'Minimum 8 symbols')
+      .max(60, 'Maximum 60 symbols')
+      .required('This field is required.'),
+  });
+
   const { login, currentUser }: any = useContext(AuthContext);
   const router = useRouter();
-  console.log(currentUser); 
 
-
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, watch, errors } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
   async function onSubmit(data) {
     try {
       await login(data.email, data.password);
@@ -71,7 +85,7 @@ const signIn = (props: Props) => {
               name="email"
               inputRef={register({ required: true })}
             />
-
+            <div style={{ color: 'red' }}>{errors.email?.message}</div>
             <TextField
               style={{ marginTop: '10px' }}
               placeholder="Password"
@@ -79,7 +93,7 @@ const signIn = (props: Props) => {
               type="password"
               inputRef={register({ required: true })}
             />
-
+            <div style={{ color: 'red' }}>{errors.password?.message}</div>
             {errors.exampleRequired && <span>This field is required</span>}
             <RedirectMessage>
               <Typography>Forgot your password?</Typography>

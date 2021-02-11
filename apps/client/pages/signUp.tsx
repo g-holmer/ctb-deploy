@@ -7,12 +7,40 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
 interface Props {}
 
 const signUp = (props: Props) => {
+  const registerSchema = Yup.object().shape({
+    email: Yup.string()
+      .email('Wrong email format')
+      .min(3, 'Minimum 3 symbols')
+      .max(60, 'Maximum 60 symbols')
+      .required('This field is required.'),
+    password: Yup.string()
+      .min(8, 'Minimum 8 symbols')
+      .max(60, 'Maximum 60 symbols')
+      .required('This field is required.'),
+    confirmPassword: Yup.string()
+      .min(8, 'Minimum 8 symbols')
+      .max(60, 'Maximum 60 symbols')
+      .required('This field is required.')
+      .when('password', {
+        is: (val) => (val && val.length > 0 ? true : false),
+        then: Yup.string().oneOf(
+          [Yup.ref('password')],
+          "Password and Confirm Password didn't match"
+        ),
+      }),
+  });
+
   const router = useRouter();
 
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, watch, errors } = useForm({
+    resolver: yupResolver(registerSchema),
+  });
   const { signup }: any = useContext(AuthContext);
 
   async function onSubmit(data) {
@@ -73,7 +101,7 @@ const signUp = (props: Props) => {
               name="email"
               inputRef={register({ required: true })}
             />
-
+            <div style={{ color: 'red' }}>{errors.email?.message}</div>
             <TextField
               style={{ marginTop: '10px' }}
               placeholder="Password"
@@ -81,7 +109,17 @@ const signUp = (props: Props) => {
               type="password"
               inputRef={register({ required: true })}
             />
-
+            <div style={{ color: 'red' }}>{errors.password?.message}</div>
+            <TextField
+              style={{ marginTop: '10px' }}
+              placeholder="Confirm Password"
+              name="confirmPassword"
+              type="password"
+              inputRef={register({ required: true })}
+            />
+            <div style={{ color: 'red' }}>
+              {errors.confirmPassword?.message}
+            </div>
             {errors.exampleRequired && <span>This field is required</span>}
             <RedirectMessage>
               <Typography>Forgot your password?</Typography>
