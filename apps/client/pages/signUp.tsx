@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-
+import { AuthContext } from '../contexts/AuthContext';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';
@@ -13,6 +13,8 @@ const signIn = (props: Props) => {
   const onSubmit = (data) => {
     console.log(data);
   };
+  const { signUp }: any = useContext(AuthContext);
+
   const darkTheme = createMuiTheme({
     palette: {
       primary: {

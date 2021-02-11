@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { AuthContextProvider } from '../contexts/AuthContext';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
@@ -11,7 +12,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <div className="app">
         <header className="flex"></header>
         <main>
-          <Component {...pageProps} />
+          <AuthContextProvider>
+            <Component {...pageProps} />
+          </AuthContextProvider>
         </main>
       </div>
     </>
