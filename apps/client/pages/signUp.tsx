@@ -55,10 +55,10 @@ const signUp = (props: Props) => {
 
   const darkTheme = createMuiTheme({
     palette: {
-      primary: {
-        main: '#da920b',
-      },
       secondary: {
+        main: '#4CADC0',
+      },
+      primary: {
         light: '#0066ff',
         main: '#0044ff',
 
@@ -87,6 +87,8 @@ const signUp = (props: Props) => {
           <Form>
             <Typography variant="h5">Register With Google</Typography>
             <Button
+              color="secondary"
+              variant="contained"
               onClick={googleSignInHandler}
               style={{ padding: '8px', backgroundColor: 'gray' }}
             >
@@ -124,7 +126,12 @@ const signUp = (props: Props) => {
               {errors.confirmPassword?.message}
             </div>
 
-            <Button style={{ marginTop: '10px' }} type="submit">
+            <Button
+              color="secondary"
+              variant="contained"
+              style={{ marginTop: '10px' }}
+              type="submit"
+            >
               Submit
             </Button>
           </Form>

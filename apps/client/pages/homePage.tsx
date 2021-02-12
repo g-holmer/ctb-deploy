@@ -41,6 +41,9 @@ interface Props {}
 const homePage = (props: Props) => {
   const darkTheme = createMuiTheme({
     palette: {
+      primary: {
+        main: '#4CADC0',
+      },
       type: 'dark',
     },
   });
@@ -71,22 +74,31 @@ const homePage = (props: Props) => {
           <SearchBox>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <TextField
+                id="outlined-basic"
+                label="Enter café"
+                variant="outlined"
                 style={{ marginTop: '10px' }}
-                placeholder="Enter café"
                 name="email"
                 inputRef={register({ required: true })}
               />
               <div style={{ color: 'red' }}>{errors.email?.message}</div>
               <TextField
                 style={{ marginTop: '10px' }}
-                placeholder="Enter city, location or area"
+                id="outlined-basic"
+                label="Enter city, location or area"
+                variant="outlined"
                 name="password"
                 type="text"
                 inputRef={register({ required: true })}
               />
               <div style={{ color: 'red' }}>{errors.password?.message}</div>
 
-              <Button style={{ marginTop: '10px' }} type="submit">
+              <Button
+                color="primary"
+                variant="contained"
+                style={{ marginTop: '10px' }}
+                type="submit"
+              >
                 Search café
               </Button>
             </Form>

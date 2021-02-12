@@ -51,10 +51,10 @@ const ForgotPassword = (props: Props) => {
   }
   const darkTheme = createMuiTheme({
     palette: {
-      primary: {
-        main: '#da920b',
-      },
       secondary: {
+        main: '#4CADC0',
+      },
+      primary: {
         light: '#0066ff',
         main: '#0044ff',
 
@@ -84,7 +84,12 @@ const ForgotPassword = (props: Props) => {
 
             <div style={{ color: 'red' }}>{errors.email?.message}</div>
             {loading ? <CircularProgress /> : <p>{message}</p>}
-            <Button style={{ marginTop: '10px' }} type="submit">
+            <Button
+              color="secondary"
+              variant="contained"
+              style={{ marginTop: '10px' }}
+              type="submit"
+            >
               Reset Password
             </Button>
             <RedirectMessage>

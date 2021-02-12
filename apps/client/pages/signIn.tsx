@@ -46,10 +46,10 @@ const SignIn = (props: Props) => {
   }
   const darkTheme = createMuiTheme({
     palette: {
-      primary: {
-        main: '#da920b',
-      },
       secondary: {
+        main: '#4CADC0',
+      },
+      primary: {
         light: '#0066ff',
         main: '#0044ff',
 
@@ -111,7 +111,12 @@ const SignIn = (props: Props) => {
                 <a>Click Here</a>
               </Link>
             </RedirectMessage>
-            <Button style={{ marginTop: '10px' }} type="submit">
+            <Button
+              color="secondary"
+              variant="contained"
+              style={{ marginTop: '10px' }}
+              type="submit"
+            >
               Submit
             </Button>
           </Form>
