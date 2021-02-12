@@ -11,8 +11,6 @@ export function Index() {
   return (
     <StyledPage>
       <h2>Resources &amp; Tools</h2>
-
-      <Header />
     </StyledPage>
   );
 }
