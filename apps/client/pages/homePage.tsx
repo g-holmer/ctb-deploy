@@ -46,12 +46,25 @@ interface Props {}
 const Hero = styled(Box)`
   color: white;
   display: flex;
+  flex-direction: column;
+
   align-items: center;
-  justify-content: space-between;
+
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   background: url('/img/hero/coffee-hero.jpg') no-repeat center;
   background-size: cover;
   max-width: 100vw;
-  height: 40vw;
+  min-height: 470px;
+  @media (min-width: 768px) {
+    min-height: 44vw;
+  }
+
+  @media (min-width: 970px) {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
   filter: drop-shadow(0px 12px 20px rgba(0, 0, 0, 0.6));
 `;
 const Form = styled.form`
@@ -68,6 +81,7 @@ const Home = styled(Box)`
   flex-direction: column;
   background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
     #c8dbe1;
+  position: relative;
 `;
 
 const OnboardingText = styled(Box)`
@@ -75,17 +89,20 @@ const OnboardingText = styled(Box)`
 `;
 
 const OnboardingMessage = styled(Box)`
-  margin-left: 10%;
+  margin: 30px;
 `;
 const OnboardingContent = styled(Box)`
+  flex-wrap: wrap;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin: 5vw;
+  @media (min-width: 1000px) {
+    justify-content: space-between;
+  }
 `;
 
 const SearchBox = styled(Box)`
-  margin-right: 10%;
   display: flex;
   flex-direction: column;
   min-width: 300px;
@@ -116,13 +133,14 @@ const homePage = (props: Props) => {
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: yupResolver(loginSchema),
   });
-  function onSubmit(data) {}
+
+  const onSubmit = (data) => {};
   return (
     <ThemeProvider theme={darkTheme}>
       <Home>
         <Hero>
           <OnboardingMessage>
-            <Typography variant="h5">Find a café - order on the go!</Typography>
+            <Typography variant="h4">Find a café - order on the go!</Typography>
           </OnboardingMessage>
           <SearchBox>
             <Form onSubmit={handleSubmit(onSubmit)}>
@@ -170,12 +188,7 @@ const homePage = (props: Props) => {
         <Marquee velocity={120} resetAfterTries={50}>
           {images.map((item) => (
             <Motion key={`child-${item.id}`} velocity={0} radius={150}>
-              <Image
-                src={item.imgSrc}
-                width={350}
-                height={150}
-                objectFit="contain"
-              />
+              <Image src={item.imgSrc} width={350} height={150} />
             </Motion>
           ))}
         </Marquee>

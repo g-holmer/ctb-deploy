@@ -15,12 +15,12 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #5c5c5c;
+
   div {
     margin-left: 4vw;
-    margin: 1vw;
+    margin: 10px;
   }
   nav {
-    margin: 1vw;
     margin-right: 4vw;
     ul {
       display: flex;

@@ -16,9 +16,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Welcome to client!</title>
       </Head>
-      <div className="app">
+      <div>
         <Header />
-        <main>
+        <main style={{ top: '70px', position: 'relative' }}>
           <AuthContextProvider>
             <Component {...pageProps} />
           </AuthContextProvider>
