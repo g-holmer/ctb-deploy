@@ -12,109 +12,32 @@ import Image from 'next/image';
 const images = [
   {
     id: 0,
-    name: 'JavaScript',
     imgSrc: '/img/marquee/caribou-cafe.png',
   },
   {
     id: 1,
-    name: 'CSS',
     imgSrc: '/img/marquee/dunkin.png',
   },
   {
     id: 2,
-    name: 'HTML',
     imgSrc: '/img/marquee/espressohouse.png',
   },
   {
     id: 3,
-    name: 'Redux',
     imgSrc: '/img/marquee/Starbucks_Corporation_Logo_2011.svg.png',
   },
   {
     id: 4,
-    name: 'TypeScript',
     imgSrc: '/img/marquee/tim hortons.png',
   },
   {
     id: 5,
-    name: 'React',
     imgSrc: '/img/marquee/waynescoffee.svg',
   },
 ];
 
 interface Props {}
-const Hero = styled(Box)`
-  color: white;
-  display: flex;
-  flex-direction: column;
 
-  align-items: center;
-
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  background: url('/img/hero/coffee-hero.jpg') no-repeat center;
-  background-size: cover;
-  max-width: 100vw;
-  min-height: 470px;
-  @media (min-width: 768px) {
-    min-height: 44vw;
-  }
-
-  @media (min-width: 970px) {
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
-
-  filter: drop-shadow(0px 12px 20px rgba(0, 0, 0, 0.6));
-`;
-const Form = styled.form`
-  display: flex;
-  input,
-  button {
-    margin-top: 4px;
-  }
-  flex-direction: column;
-`;
-
-const Home = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
-    #c8dbe1;
-  position: relative;
-`;
-
-const OnboardingText = styled(Box)`
-  max-width: 400px;
-  margin: 0 30px 30px 0;
-`;
-
-const OnboardingMessage = styled(Box)`
-  margin: 30px;
-`;
-const OnboardingContent = styled(Box)`
-  flex-wrap: wrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 5vw 5vw 0 5vw;
-  @media (min-width: 1040px) {
-    justify-content: space-between;
-  }
-`;
-
-const SearchBox = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  background: #333333;
-  color: white;
-  padding: 20px;
-  border-radius: 30px;
-`;
-const ImgWrapper = styled.div`
-  filter: drop-shadow(0px 7px 10px rgba(0, 0, 0, 0.6));
-`;
 const homePage = (props: Props) => {
   const darkTheme = createMuiTheme({
     palette: {
@@ -202,9 +125,80 @@ const homePage = (props: Props) => {
     </ThemeProvider>
   );
 };
+const Hero = styled(Box)`
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background: url('/img/hero/coffee-hero.jpg') no-repeat center;
+  background-size: cover;
+  max-width: 100vw;
+  min-height: 470px;
+  @media (min-width: 768px) {
+    min-height: 44vw;
+  }
+
+  @media (min-width: 970px) {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  filter: drop-shadow(0px 12px 20px rgba(0, 0, 0, 0.6));
+`;
+const Form = styled.form`
+  display: flex;
+  input,
+  button {
+    margin-top: 4px;
+  }
+  flex-direction: column;
+`;
+
+const Home = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #c8dbe1;
+  position: relative;
+`;
+
+const OnboardingText = styled(Box)`
+  max-width: 400px;
+  margin: 0 30px 30px 0;
+`;
+
+const OnboardingMessage = styled(Box)`
+  margin: 30px;
+`;
+const OnboardingContent = styled(Box)`
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5vw 5vw 0 5vw;
+  @media (min-width: 1040px) {
+    justify-content: space-between;
+  }
+`;
 const ImageWrapper = styled.div`
   position: relative;
   width: 170px;
   height: 100px;
+`;
+const SearchBox = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  background: #333333;
+  color: white;
+  padding: 20px;
+  border-radius: 30px;
+`;
+const ImgWrapper = styled.div`
+  filter: drop-shadow(0px 7px 10px rgba(0, 0, 0, 0.6));
 `;
 export default homePage;
