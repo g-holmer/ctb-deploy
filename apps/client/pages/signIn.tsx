@@ -26,12 +26,16 @@ const SignIn = (props: Props) => {
       .required('This field is required.'),
   });
 
-  const { login }: any = useContext(AuthContext);
+  const { login, signInWithGoogle }: any = useContext(AuthContext);
   const router = useRouter();
 
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: yupResolver(loginSchema),
   });
+  const googleSignInHandler = () => {
+    signInWithGoogle();
+    router.push('/dashboard');
+  };
   async function onSubmit(data) {
     try {
       await login(data.email, data.password);
@@ -73,11 +77,14 @@ const SignIn = (props: Props) => {
         <FormWrapper>
           <Form>
             <Typography variant="h5">Login With Google</Typography>
-            <div style={{ padding: '8px', backgroundColor: 'gray' }}>
+            <Button
+              onClick={googleSignInHandler}
+              style={{ padding: '8px', backgroundColor: 'gray' }}
+            >
               <Typography style={{ textAlign: 'center' }}>
                 Sign In With Google
               </Typography>
-            </div>
+            </Button>
           </Form>
           <Divider orientation="vertical" flexItem />
           <Form onSubmit={handleSubmit(onSubmit)}>
