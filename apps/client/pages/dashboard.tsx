@@ -11,7 +11,7 @@ const dashboard = (props: Props) => {
   const router = useRouter();
 
   const logoutUser = () => {
-    router.push('/signin');
+    router.push('/signIn');
     logout();
   };
 
