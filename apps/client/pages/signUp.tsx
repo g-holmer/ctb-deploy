@@ -41,8 +41,11 @@ const signUp = (props: Props) => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(registerSchema),
   });
-  const { signup }: any = useContext(AuthContext);
-
+  const { signup, signInWithGoogle }: any = useContext(AuthContext);
+  const googleSignInHandler = () => {
+    signInWithGoogle();
+    router.push('/dashboard');
+  };
   async function onSubmit(data) {
     try {
       await signup(data.email, data.password);
@@ -83,11 +86,14 @@ const signUp = (props: Props) => {
         <FormWrapper>
           <Form>
             <Typography variant="h5">Register With Google</Typography>
-            <div style={{ padding: '8px', backgroundColor: 'gray' }}>
+            <Button
+              onClick={googleSignInHandler}
+              style={{ padding: '8px', backgroundColor: 'gray' }}
+            >
               <Typography style={{ textAlign: 'center' }}>
                 Sign Up With Google
               </Typography>
-            </div>
+            </Button>
           </Form>
           <Divider orientation="vertical" flexItem />
           <Form onSubmit={handleSubmit(onSubmit)}>
