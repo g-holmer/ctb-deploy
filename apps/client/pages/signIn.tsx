@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { AuthContext } from '@ctb/auth-context';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
-
+import LoginRoute from '../components/LoginRoute';
 interface Props {}
 
 const SignIn = (props: Props) => {
@@ -147,4 +147,4 @@ const FormWrapper = styled(Box)`
   justify-content: space-evenly;
 `;
 
-export default SignIn;
+export default LoginRoute(SignIn);

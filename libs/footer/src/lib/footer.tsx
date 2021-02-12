@@ -46,7 +46,7 @@ export function Footer(props: FooterProps) {
       </div>
       <nav>
         <ul>
-          <li>
+          {/* <li>
             <Link href="">
               <a>Home</a>
             </Link>
@@ -60,7 +60,7 @@ export function Footer(props: FooterProps) {
             <Link href="">
               <a>Login</a>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </StyledFooter>

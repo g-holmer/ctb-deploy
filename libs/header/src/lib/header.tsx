@@ -48,7 +48,7 @@ export function Header(props: HeaderProps) {
       <nav>
         <ul>
           <li>
-            <Link href="">
+            <Link href="/">
               <a>Home</a>
             </Link>
           </li>
@@ -58,7 +58,7 @@ export function Header(props: HeaderProps) {
             </Link>
           </li>
           <li>
-            <Link href="">
+            <Link href="/signIn">
               <a>Login</a>
             </Link>
           </li>

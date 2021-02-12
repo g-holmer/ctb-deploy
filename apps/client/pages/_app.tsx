@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { AuthContextProvider } from '@ctb/auth-context';
 import { Header } from '@ctb/header';
 import { Footer } from '@ctb/footer';
+import styled from 'styled-components';
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
