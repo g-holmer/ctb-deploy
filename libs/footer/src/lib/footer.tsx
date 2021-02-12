@@ -6,9 +6,11 @@ import styled from 'styled-components';
 export interface FooterProps {}
 
 const StyledFooter = styled.footer`
+  position: relative;
   box-shadow: 0px -12px 35px rgba(0, 0, 0, 0.6);
   width: 100%;
   background: #111;
+  min-height: 70px;
   color: #f5f5f5;
   display: flex;
   align-items: center;
@@ -41,12 +43,9 @@ const StyledFooter = styled.footer`
 export function Footer(props: FooterProps) {
   return (
     <StyledFooter>
-      <div>
-        <p>Logotype</p>
-      </div>
-      <nav>
+      {/* <nav>
         <ul>
-          {/* <li>
+          <li>
             <Link href="">
               <a>Home</a>
             </Link>
@@ -60,9 +59,9 @@ export function Footer(props: FooterProps) {
             <Link href="">
               <a>Login</a>
             </Link>
-          </li> */}
+          </li>
         </ul>
-      </nav>
+      </nav> */}
     </StyledFooter>
   );
 }

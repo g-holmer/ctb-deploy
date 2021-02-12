@@ -86,6 +86,7 @@ const Home = styled(Box)`
 
 const OnboardingText = styled(Box)`
   max-width: 400px;
+  margin: 0 30px 30px 0;
 `;
 
 const OnboardingMessage = styled(Box)`
@@ -97,7 +98,7 @@ const OnboardingContent = styled(Box)`
   align-items: center;
   justify-content: center;
   margin: 5vw;
-  @media (min-width: 1000px) {
+  @media (min-width: 1040px) {
     justify-content: space-between;
   }
 `;
