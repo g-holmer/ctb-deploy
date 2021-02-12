@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { AuthContext } from '../contexts/AuthContext';
+import { AuthContext } from '@ctb/auth-context';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Button } from '@material-ui/core';
-import { AuthContext } from '../contexts/AuthContext';
+import { AuthContext } from '@ctb/auth-context';
 import { useRouter } from 'next/router';
-import withAuth from '../components/withAuth';
+import PrivateRoute from '../components/PrivateRoute';
 
 interface Props {}
 
@@ -17,4 +17,4 @@ const dashboard = (props: Props) => {
 
   return <div>{<Button onClick={logoutUser}>Logout</Button>}</div>;
 };
-export default withAuth(dashboard);
+export default PrivateRoute(dashboard);

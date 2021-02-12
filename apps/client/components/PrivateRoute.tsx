@@ -2,11 +2,10 @@ import { AuthContext } from '../contexts/AuthContext';
 import React, { useContext } from 'react';
 import SignIn from '../pages/signin';
 
-const withAuth = (Component) => {
+const PrivateRoute = (Component) => {
   const Auth = (props) => {
     const { currentUser }: any = useContext(AuthContext);
 
-    // If user is not logged in, return login component
     if (!currentUser) {
       return <SignIn />;
     }
@@ -21,4 +20,4 @@ const withAuth = (Component) => {
   return Auth;
 };
 
-export default withAuth;
+export default PrivateRoute;

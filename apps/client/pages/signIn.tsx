@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { AuthContext } from '../contexts/AuthContext';
+import { AuthContext } from '@ctb/auth-context';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 

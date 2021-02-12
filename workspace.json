@@ -218,6 +218,56 @@
           }
         }
       }
+    },
+    "firebase-auth": {
+      "root": "libs/firebase-auth",
+      "sourceRoot": "libs/firebase-auth/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/firebase-auth/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/firebase-auth"
+          ],
+          "options": {
+            "jestConfig": "libs/firebase-auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "auth-context": {
+      "root": "libs/auth-context",
+      "sourceRoot": "libs/auth-context/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/auth-context/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/auth-context"
+          ],
+          "options": {
+            "jestConfig": "libs/auth-context/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
