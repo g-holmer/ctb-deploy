@@ -1,5 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
+import {
+  TextField,
+  Button,
+  Typography,
+  Box,
+  CircularProgress,
+} from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -12,32 +18,35 @@ import * as Yup from 'yup';
 
 interface Props {}
 
-const SignIn = (props: Props) => {
+const ForgotPassword = (props: Props) => {
+  const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<string>('');
-  const loginSchema = Yup.object().shape({
+  const forgotPasswordSchema = Yup.object().shape({
     email: Yup.string()
       .email('Wrong email format')
       .min(3, 'Minimum 3 symbols')
       .max(50, 'Maximum 50 symbols')
       .required('This field is required.'),
-    password: Yup.string()
-      .min(8, 'Minimum 8 symbols')
-      .max(60, 'Maximum 60 symbols')
-      .required('This field is required.'),
   });
 
-  const { login }: any = useContext(AuthContext);
+  const { resetPassword, loading, setLoading }: any = useContext(AuthContext);
   const router = useRouter();
 
   const { register, handleSubmit, watch, errors } = useForm({
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(forgotPasswordSchema),
   });
   async function onSubmit(data) {
     try {
-      await login(data.email, data.password);
-      router.push('/dashboard');
+      setLoading(true);
+      setMessage('');
+      setError('');
+
+      await resetPassword(data.email);
+      setMessage('Check your inbox for futher instructions!');
+      setLoading(false);
     } catch {
-      setError('Wrong email or password.');
+      setError('Failed to reset password');
+      setLoading(false);
     }
   }
   const darkTheme = createMuiTheme({
@@ -60,53 +69,29 @@ const SignIn = (props: Props) => {
           style={{ textAlign: 'center', margin: '12px' }}
           variant="h4"
         >
-          Welcome
+          Forgot Password
         </Typography>
-        <RedirectMessage style={{ display: 'flex', justifyContent: 'center' }}>
-          <Typography style={{ textAlign: 'center' }}>
-            No user account?
-          </Typography>
-          <Link href="/signup">
-            <a>Please register here</a>
-          </Link>
-        </RedirectMessage>
+
         <FormWrapper>
-          <Form>
-            <Typography variant="h5">Login With Google</Typography>
-            <div style={{ padding: '8px', backgroundColor: 'gray' }}>
-              <Typography style={{ textAlign: 'center' }}>
-                Sign In With Google
-              </Typography>
-            </div>
-          </Form>
-          <Divider orientation="vertical" flexItem />
           <Form onSubmit={handleSubmit(onSubmit)}>
-            <Typography variant="h5">Login With E-mail</Typography>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <TextField
               style={{ marginTop: '10px' }}
               placeholder="E-mail"
               name="email"
               inputRef={register({ required: true })}
             />
+
             <div style={{ color: 'red' }}>{errors.email?.message}</div>
-            <TextField
-              style={{ marginTop: '10px' }}
-              placeholder="Password"
-              name="password"
-              type="password"
-              inputRef={register({ required: true })}
-            />
-            <div style={{ color: 'red' }}>{errors.password?.message}</div>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {loading ? <CircularProgress /> : <p>{message}</p>}
+            <Button style={{ marginTop: '10px' }} type="submit">
+              Reset Password
+            </Button>
             <RedirectMessage>
-              <Typography>Forgot your password?</Typography>
-              <Link href="/forgotpassword">
-                <a>Click Here</a>
+              <Link href="/signin">
+                <a>Login</a>
               </Link>
             </RedirectMessage>
-            <Button style={{ marginTop: '10px' }} type="submit">
-              Submit
-            </Button>
           </Form>
         </FormWrapper>
       </SignInBox>
@@ -115,6 +100,7 @@ const SignIn = (props: Props) => {
 };
 
 const RedirectMessage = styled(Box)`
+  justify-content: center;
   display: flex;
   margin: 10px;
   a {
@@ -140,4 +126,4 @@ const FormWrapper = styled(Box)`
   justify-content: space-evenly;
 `;
 
-export default SignIn;
+export default ForgotPassword;

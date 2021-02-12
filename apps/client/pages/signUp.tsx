@@ -117,13 +117,7 @@ const signUp = (props: Props) => {
             <div style={{ color: 'red' }}>
               {errors.confirmPassword?.message}
             </div>
-            {errors.exampleRequired && <span>This field is required</span>}
-            <RedirectMessage>
-              <Typography>Forgot your password?</Typography>
-              <Link href="/signUp">
-                <a>Click Here</a>
-              </Link>
-            </RedirectMessage>
+
             <Button style={{ marginTop: '10px' }} type="submit">
               Submit
             </Button>

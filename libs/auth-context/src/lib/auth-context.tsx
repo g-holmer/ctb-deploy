@@ -9,6 +9,7 @@ interface Props {
 }
 
 export const AuthContextProvider = (props: Props) => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [currentUser, setCurrentUser] = useState<any>(null);
 
   const signup = (email, password) => {
@@ -20,6 +21,9 @@ export const AuthContextProvider = (props: Props) => {
   const logout = () => {
     return auth.signOut();
   };
+  const resetPassword = (email) => {
+    return auth.sendPasswordResetEmail(email);
+  };
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -28,7 +32,16 @@ export const AuthContextProvider = (props: Props) => {
   }, []);
   return (
     <AuthContext.Provider
-      value={{ currentUser, setCurrentUser, signup, login, logout }}
+      value={{
+        currentUser,
+        setCurrentUser,
+        signup,
+        login,
+        logout,
+        resetPassword,
+        loading,
+        setLoading,
+      }}
     >
       {props.children}
     </AuthContext.Provider>
