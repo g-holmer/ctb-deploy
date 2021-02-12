@@ -25,6 +25,8 @@
     "owner-admin-e2e": { "tags": [], "implicitDependencies": ["owner-admin"] },
     "header": { "tags": [] },
     "client": { "tags": [] },
-    "client-e2e": { "tags": [], "implicitDependencies": ["client"] }
+    "client-e2e": { "tags": [], "implicitDependencies": ["client"] },
+    "firebase-auth": { "tags": [] },
+    "auth-context": { "tags": [] }
   }
 }
