@@ -97,7 +97,7 @@ const OnboardingContent = styled(Box)`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 5vw;
+  margin: 5vw 5vw 0 5vw;
   @media (min-width: 1040px) {
     justify-content: space-between;
   }
@@ -192,7 +192,9 @@ const homePage = (props: Props) => {
         <Marquee velocity={120} resetAfterTries={50}>
           {images.map((item) => (
             <Motion key={`child-${item.id}`} velocity={0} radius={150}>
-              <Image src={item.imgSrc} width={350} height={150} />
+              <ImageWrapper>
+                <Image src={item.imgSrc} layout="fill" objectFit="contain" />
+              </ImageWrapper>
             </Motion>
           ))}
         </Marquee>
@@ -200,5 +202,10 @@ const homePage = (props: Props) => {
     </ThemeProvider>
   );
 };
-
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 170px;
+  height: 100px;
+  margin-top: 100px;
+`;
 export default homePage;
