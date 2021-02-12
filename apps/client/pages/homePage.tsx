@@ -206,6 +206,5 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 170px;
   height: 100px;
-  margin-top: 100px;
 `;
 export default homePage;
