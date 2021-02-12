@@ -70,7 +70,7 @@ const SignIn = (props: Props) => {
           <Typography style={{ textAlign: 'center' }}>
             No user account?
           </Typography>
-          <Link href="/signup">
+          <Link href="/signUp">
             <a>Please register here</a>
           </Link>
         </RedirectMessage>

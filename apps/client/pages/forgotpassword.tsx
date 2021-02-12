@@ -88,7 +88,7 @@ const ForgotPassword = (props: Props) => {
               Reset Password
             </Button>
             <RedirectMessage>
-              <Link href="/signin">
+              <Link href="/signIn">
                 <a>Login</a>
               </Link>
             </RedirectMessage>
