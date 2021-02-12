@@ -17,8 +17,7 @@ const StyledHeader = styled.header`
   border-bottom: 1px solid #5c5c5c;
 
   div {
-    margin-left: 4vw;
-    margin: 10px;
+    margin: 10px 0 10px 4vw;
   }
   nav {
     margin-right: 4vw;

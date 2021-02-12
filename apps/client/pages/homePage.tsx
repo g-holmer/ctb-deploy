@@ -112,7 +112,9 @@ const SearchBox = styled(Box)`
   padding: 20px;
   border-radius: 30px;
 `;
-
+const ImgWrapper = styled.div`
+  filter: drop-shadow(0px 7px 10px rgba(0, 0, 0, 0.6));
+`;
 const homePage = (props: Props) => {
   const darkTheme = createMuiTheme({
     palette: {
@@ -177,13 +179,14 @@ const homePage = (props: Props) => {
               discount at your first reservation.
             </Typography>
           </OnboardingText>
-
-          <Image
-            src="/img/queue.jpg"
-            alt="Picture of the author"
-            width={500}
-            height={350}
-          />
+          <ImgWrapper>
+            <Image
+              src="/img/queue.jpg"
+              alt="Picture of the author"
+              width={500}
+              height={350}
+            />
+          </ImgWrapper>
         </OnboardingContent>
 
         <Marquee velocity={120} resetAfterTries={50}>
