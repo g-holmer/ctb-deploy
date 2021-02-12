@@ -85,7 +85,7 @@ const signUp = (props: Props) => {
             <Typography variant="h5">Register With Google</Typography>
             <div style={{ padding: '8px', backgroundColor: 'gray' }}>
               <Typography style={{ textAlign: 'center' }}>
-                Sign In With Google
+                Sign Up With Google
               </Typography>
             </div>
           </Form>

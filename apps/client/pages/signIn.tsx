@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 
 interface Props {}
 
-const signIn = (props: Props) => {
+const SignIn = (props: Props) => {
   const loginSchema = Yup.object().shape({
     email: Yup.string()
       .email('Wrong email format')
@@ -52,7 +52,7 @@ const signIn = (props: Props) => {
   });
   return (
     <ThemeProvider theme={darkTheme}>
-      <SignIn>
+      <SignInBox>
         <Typography
           style={{ textAlign: 'center', margin: '12px' }}
           variant="h4"
@@ -106,7 +106,7 @@ const signIn = (props: Props) => {
             </Button>
           </Form>
         </FormWrapper>
-      </SignIn>
+      </SignInBox>
     </ThemeProvider>
   );
 };
@@ -126,7 +126,7 @@ const Form = styled.form`
 
   flex-direction: column;
 `;
-const SignIn = styled(Box)`
+const SignInBox = styled(Box)`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -137,4 +137,4 @@ const FormWrapper = styled(Box)`
   justify-content: space-evenly;
 `;
 
-export default signIn;
+export default SignIn;
