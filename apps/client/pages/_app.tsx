@@ -4,7 +4,8 @@ import Head from 'next/head';
 import { AuthContextProvider } from '@ctb/auth-context';
 import { Header } from '@ctb/header';
 import { Footer } from '@ctb/footer';
-import styled from 'styled-components';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { theme } from '@ctb/theme-provider';
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -19,9 +20,11 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <div>
         <Header />
         <main style={{ top: '70px', position: 'relative' }}>
-          <AuthContextProvider>
-            <Component {...pageProps} />
-          </AuthContextProvider>
+          <ThemeProvider theme={theme}>
+            <AuthContextProvider>
+              <Component {...pageProps} />
+            </AuthContextProvider>
+          </ThemeProvider>
         </main>
         <Footer />
       </div>

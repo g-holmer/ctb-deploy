@@ -6,8 +6,7 @@ import {
   Box,
   CircularProgress,
 } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
@@ -49,58 +48,41 @@ const ForgotPassword = (props: Props) => {
       setLoading(false);
     }
   }
-  const darkTheme = createMuiTheme({
-    palette: {
-      secondary: {
-        main: '#4CADC0',
-      },
-      primary: {
-        light: '#0066ff',
-        main: '#0044ff',
 
-        contrastText: '#ffcc00',
-      },
-    },
-  });
   return (
-    <ThemeProvider theme={darkTheme}>
-      <SignInBox>
-        <Typography
-          style={{ textAlign: 'center', margin: '12px' }}
-          variant="h4"
-        >
-          Forgot Password
-        </Typography>
+    <SignInBox>
+      <Typography style={{ textAlign: 'center', margin: '12px' }} variant="h4">
+        Forgot Password
+      </Typography>
 
-        <FormWrapper>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <TextField
-              style={{ marginTop: '10px' }}
-              placeholder="E-mail"
-              name="email"
-              inputRef={register({ required: true })}
-            />
+      <FormWrapper>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          <TextField
+            style={{ marginTop: '10px' }}
+            placeholder="E-mail"
+            name="email"
+            inputRef={register({ required: true })}
+          />
 
-            <div style={{ color: 'red' }}>{errors.email?.message}</div>
-            {loading ? <CircularProgress /> : <p>{message}</p>}
-            <Button
-              color="secondary"
-              variant="contained"
-              style={{ marginTop: '10px' }}
-              type="submit"
-            >
-              Reset Password
-            </Button>
-            <RedirectMessage>
-              <Link href="/signIn">
-                <a>Login</a>
-              </Link>
-            </RedirectMessage>
-          </Form>
-        </FormWrapper>
-      </SignInBox>
-    </ThemeProvider>
+          <div style={{ color: 'red' }}>{errors.email?.message}</div>
+          {loading ? <CircularProgress /> : <p>{message}</p>}
+          <Button
+            color="secondary"
+            variant="contained"
+            style={{ marginTop: '10px' }}
+            type="submit"
+          >
+            Reset Password
+          </Button>
+          <RedirectMessage>
+            <Link href="/signIn">
+              <a>Login</a>
+            </Link>
+          </RedirectMessage>
+        </Form>
+      </FormWrapper>
+    </SignInBox>
   );
 };
 

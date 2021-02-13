@@ -4,11 +4,11 @@ import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import Marquee, { Motion, randomIntFromInterval } from 'react-marquee-slider';
-
+import Marquee, { Motion } from 'react-marquee-slider';
 import Image from 'next/image';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { theme } from '@ctb/dark-theme-provider';
+
 const images = [
   {
     id: 0,
@@ -39,14 +39,6 @@ const images = [
 interface Props {}
 
 const homePage = (props: Props) => {
-  const darkTheme = createMuiTheme({
-    palette: {
-      primary: {
-        main: '#4CADC0',
-      },
-      type: 'dark',
-    },
-  });
   const loginSchema = Yup.object().shape({
     email: Yup.string()
       .email('Wrong email format')
@@ -65,7 +57,7 @@ const homePage = (props: Props) => {
 
   const onSubmit = (data) => {};
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <Home>
         <Hero>
           <OnboardingMessage>
