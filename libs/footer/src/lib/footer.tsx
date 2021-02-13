@@ -3,23 +3,25 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 /* eslint-disable-next-line */
-export interface HeaderProps {}
+export interface FooterProps {}
 
-const StyledHeader = styled.header`
-  z-index: 100;
-  position: fixed;
+const StyledFooter = styled.footer`
+  position: relative;
+  box-shadow: 0px -12px 35px rgba(0, 0, 0, 0.6);
   width: 100%;
   background: #111;
+  min-height: 70px;
   color: #f5f5f5;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #5c5c5c;
-
   div {
-    margin: 10px 0 10px 4vw;
+    margin-left: 4vw;
+    margin: 1vw;
   }
   nav {
+    margin: 1vw;
     margin-right: 4vw;
     ul {
       display: flex;
@@ -38,16 +40,13 @@ const StyledHeader = styled.header`
   }
 `;
 
-export function Header(props: HeaderProps) {
+export function Footer(props: FooterProps) {
   return (
-    <StyledHeader>
-      <div>
-        <p>Logotype</p>
-      </div>
-      <nav>
+    <StyledFooter>
+      {/* <nav>
         <ul>
           <li>
-            <Link href="/">
+            <Link href="">
               <a>Home</a>
             </Link>
           </li>
@@ -57,14 +56,14 @@ export function Header(props: HeaderProps) {
             </Link>
           </li>
           <li>
-            <Link href="/signIn">
+            <Link href="">
               <a>Login</a>
             </Link>
           </li>
         </ul>
-      </nav>
-    </StyledHeader>
+      </nav> */}
+    </StyledFooter>
   );
 }
 
-export default Header;
+export default Footer;
