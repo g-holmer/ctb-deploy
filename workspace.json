@@ -293,6 +293,56 @@
           }
         }
       }
+    },
+    "theme-provider": {
+      "root": "libs/theme-provider",
+      "sourceRoot": "libs/theme-provider/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/theme-provider/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/theme-provider"
+          ],
+          "options": {
+            "jestConfig": "libs/theme-provider/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "dark-theme-provider": {
+      "root": "libs/dark-theme-provider",
+      "sourceRoot": "libs/dark-theme-provider/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/dark-theme-provider/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/dark-theme-provider"
+          ],
+          "options": {
+            "jestConfig": "libs/dark-theme-provider/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

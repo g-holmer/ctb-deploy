@@ -6,5 +6,7 @@ module.exports = {
     '<rootDir>/libs/firebase-auth',
     '<rootDir>/libs/auth-context',
     '<rootDir>/libs/footer',
+    '<rootDir>/libs/theme-provider',
+    '<rootDir>/libs/dark-theme-provider',
   ],
 };

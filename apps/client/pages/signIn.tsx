@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
@@ -44,85 +44,68 @@ const SignIn = (props: Props) => {
       setError('Wrong email or password.');
     }
   }
-  const darkTheme = createMuiTheme({
-    palette: {
-      secondary: {
-        main: '#4CADC0',
-      },
-      primary: {
-        light: '#0066ff',
-        main: '#0044ff',
 
-        contrastText: '#ffcc00',
-      },
-    },
-  });
   return (
-    <ThemeProvider theme={darkTheme}>
-      <SignInBox>
-        <Typography
-          style={{ textAlign: 'center', margin: '12px' }}
-          variant="h4"
-        >
-          Welcome
+    <SignInBox>
+      <Typography style={{ textAlign: 'center', margin: '12px' }} variant="h4">
+        Welcome
+      </Typography>
+      <RedirectMessage style={{ display: 'flex', justifyContent: 'center' }}>
+        <Typography style={{ textAlign: 'center' }}>
+          No user account?
         </Typography>
-        <RedirectMessage style={{ display: 'flex', justifyContent: 'center' }}>
-          <Typography style={{ textAlign: 'center' }}>
-            No user account?
-          </Typography>
-          <Link href="/signUp">
-            <a>Please register here</a>
-          </Link>
-        </RedirectMessage>
-        <FormWrapper>
-          <Form>
-            <Typography variant="h5">Login With Google</Typography>
-            <Button
-              onClick={googleSignInHandler}
-              style={{ padding: '8px', backgroundColor: 'gray' }}
-            >
-              <Typography style={{ textAlign: 'center' }}>
-                Sign In With Google
-              </Typography>
-            </Button>
-          </Form>
-          <Divider orientation="vertical" flexItem />
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <Typography variant="h5">Login With E-mail</Typography>
-            <TextField
-              style={{ marginTop: '10px' }}
-              placeholder="E-mail"
-              name="email"
-              inputRef={register({ required: true })}
-            />
-            <div style={{ color: 'red' }}>{errors.email?.message}</div>
-            <TextField
-              style={{ marginTop: '10px' }}
-              placeholder="Password"
-              name="password"
-              type="password"
-              inputRef={register({ required: true })}
-            />
-            <div style={{ color: 'red' }}>{errors.password?.message}</div>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <RedirectMessage>
-              <Typography>Forgot your password?</Typography>
-              <Link href="/forgotpassword">
-                <a>Click Here</a>
-              </Link>
-            </RedirectMessage>
-            <Button
-              color="secondary"
-              variant="contained"
-              style={{ marginTop: '10px' }}
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Form>
-        </FormWrapper>
-      </SignInBox>
-    </ThemeProvider>
+        <Link href="/signUp">
+          <a>Please register here</a>
+        </Link>
+      </RedirectMessage>
+      <FormWrapper>
+        <Form>
+          <Typography variant="h5">Login With Google</Typography>
+          <Button
+            onClick={googleSignInHandler}
+            style={{ padding: '8px', backgroundColor: 'gray' }}
+          >
+            <Typography style={{ textAlign: 'center' }}>
+              Sign In With Google
+            </Typography>
+          </Button>
+        </Form>
+        <Divider orientation="vertical" flexItem />
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Typography variant="h5">Login With E-mail</Typography>
+          <TextField
+            style={{ marginTop: '10px' }}
+            placeholder="E-mail"
+            name="email"
+            inputRef={register({ required: true })}
+          />
+          <div style={{ color: 'red' }}>{errors.email?.message}</div>
+          <TextField
+            style={{ marginTop: '10px' }}
+            placeholder="Password"
+            name="password"
+            type="password"
+            inputRef={register({ required: true })}
+          />
+          <div style={{ color: 'red' }}>{errors.password?.message}</div>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          <RedirectMessage>
+            <Typography>Forgot your password?</Typography>
+            <Link href="/forgotpassword">
+              <a>Click Here</a>
+            </Link>
+          </RedirectMessage>
+          <Button
+            color="secondary"
+            variant="contained"
+            style={{ marginTop: '10px' }}
+            type="submit"
+          >
+            Submit
+          </Button>
+        </Form>
+      </FormWrapper>
+    </SignInBox>
   );
 };
 

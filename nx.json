@@ -28,6 +28,8 @@
     "client-e2e": { "tags": [], "implicitDependencies": ["client"] },
     "firebase-auth": { "tags": [] },
     "auth-context": { "tags": [] },
-    "footer": { "tags": [] }
+    "footer": { "tags": [] },
+    "theme-provider": { "tags": [] },
+    "dark-theme-provider": { "tags": [] }
   }
 }
