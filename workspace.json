@@ -343,6 +343,31 @@
           }
         }
       }
+    },
+    "search-box-component": {
+      "root": "libs/search-box-component",
+      "sourceRoot": "libs/search-box-component/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/search-box-component/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/search-box-component"
+          ],
+          "options": {
+            "jestConfig": "libs/search-box-component/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

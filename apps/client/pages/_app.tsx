@@ -18,15 +18,15 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>Welcome to client!</title>
       </Head>
       <div>
-        <Header />
-        <main style={{ top: '70px', position: 'relative' }}>
-          <ThemeProvider theme={theme}>
-            <AuthContextProvider>
+        <AuthContextProvider>
+          <Header />
+          <main style={{ top: '60.8px', position: 'relative' }}>
+            <ThemeProvider theme={theme}>
               <Component {...pageProps} />
-            </AuthContextProvider>
-          </ThemeProvider>
-        </main>
-        <Footer />
+            </ThemeProvider>
+          </main>
+          <Footer />
+        </AuthContextProvider>
       </div>
     </>
   );
