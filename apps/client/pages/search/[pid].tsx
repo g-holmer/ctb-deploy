@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
-import Geocode from 'react-geocode';
+
 import GoogleMapReact from 'google-map-react';
 import { AuthContext } from '@ctb/auth-context';
+import { Box } from '@material-ui/core';
+import * as geolib from 'geolib';
+import SearchListItem from 'apps/client/components/SearchListItem';
+import { useRouter } from 'next/router';
 // import 'google-map-react/dist/index.css'
 
 // import LOS_ANGELES_CENTER from './const/la_center';
@@ -16,17 +20,6 @@ const Wrapper = styled.main`
 `;
 
 const App = () => {
-  Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
-  Geocode.fromAddress('Odengatan 94A Stockholm').then(
-    (response) => {
-      const { lat, lng } = response.results[0].geometry.location;
-      console.log(lat, lng);
-    },
-    (error) => {
-      console.error(error);
-    }
-  );
-
   const [places, setPlaces] = useState([]);
   const {
     navigatorPosition,
@@ -34,8 +27,7 @@ const App = () => {
     triggerNavigator,
     companiesMockData,
   }: any = useContext(AuthContext);
-  console.log(companiesMockData);
-
+  const router = useRouter();
   useEffect(() => {
     triggerNavigator();
   }, []);
@@ -53,14 +45,47 @@ const App = () => {
   //     return null;
   //   }
 
+  const getDistance = (item) => {
+    return geolib.getDistance(
+      {
+        latitude: navigatorPosition.lat,
+        longitude: navigatorPosition.lng,
+      },
+      {
+        latitude: item.coordinates.lat,
+        longitude: item.coordinates.lng,
+      }
+    );
+  };
+
+  const filteredData =
+    companiesMockData &&
+    companiesMockData.filter((item) => {
+      return item.companyName
+        .toLowerCase()
+        .includes(router.query.pid.toLowerCase());
+    });
+
   return (
-    <>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        {companiesMockData &&
-          companiesMockData.map((item) => {
-            <p>{item.companyName}</p>;
+    <Search>
+      <SearchList>
+        {filteredData &&
+          filteredData.map((item) => {
+            return (
+              <SearchListItem
+                companyName={item.companyName}
+                vatNr={item.vatNr}
+                phoneNumber={item.phoneNumber}
+                email={item.email}
+                image={item.image}
+                openingHours={item.openingHours}
+                adress={item.adress}
+                distance={navigatorPosition && getDistance(item)}
+                key={item.id}
+              />
+            );
           })}
-      </div>
+      </SearchList>
       <Wrapper>
         {navigatorPosition && (
           // <GoogleMapReact
@@ -82,8 +107,13 @@ const App = () => {
           <div></div>
         )}
       </Wrapper>
-    </>
+    </Search>
   );
 };
-
+const Search = styled(Box)`
+  padding-top: 86px;
+`;
+const SearchList = styled(Box)`
+  margin: 4vw;
+`;
 export default App;

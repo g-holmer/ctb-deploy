@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { auth, googleProvider } from '@ctb/firebase-auth';
 import React from 'react';
-
+import Geocode from 'react-geocode';
 export const AuthContext = React.createContext({});
 
 interface Props {
@@ -12,7 +12,10 @@ export const AuthContextProvider = (props: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [navigatorPosition, setNavigatorPosition] = useState<any>(null);
-  const [companiesMockData, setCompaniesMockData] = useState<any>(null);
+  const [companiesMockData, setCompaniesMockData] = useState<any>([]);
+
+  Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
+
   const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
@@ -62,16 +65,41 @@ export const AuthContextProvider = (props: Props) => {
   };
 
   useEffect(() => {
-    fetch('https://api.npoint.io/62cfdb123b0dcde60dec')
+    fetch('https://api.npoint.io/aa0072667ed15c6790e1')
       .then((data) => data.json())
       .then((data) => {
-        setCompaniesMockData(data);
+        data.map(async (item) => {
+          const response = await Geocode.fromAddress(
+            `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+          );
+
+          const { lat, lng } =
+            response && response.results[0].geometry.location;
+
+          const options = {
+            id: item.id,
+            companyName: item.companyName,
+            vatNr: item.vatNr,
+            phoneNumber: item.phoneNumber,
+            email: item.email,
+            image: item.image,
+            openingHours: item.openingHours,
+            adress: item.adress,
+            coordinates: {
+              lat,
+              lng,
+            },
+          };
+          setCompaniesMockData((prevState) => [...prevState, options]);
+        });
       });
+
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
     return unsubscribe;
   }, []);
+
   return (
     <AuthContext.Provider
       value={{

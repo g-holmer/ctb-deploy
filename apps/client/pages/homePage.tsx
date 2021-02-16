@@ -71,7 +71,7 @@ const homePage = (props: Props) => {
           {images.map((item) => (
             <Motion key={`child-${item.id}`} velocity={0} radius={150}>
               <ImageWrapper>
-                <Image src={item.imgSrc} layout="fill" objectFit="contain" />
+                <Image src={item.imgSrc} layout="fill" objectfit="contain" />
               </ImageWrapper>
             </Motion>
           ))}

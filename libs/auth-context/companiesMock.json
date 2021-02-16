@@ -5,13 +5,13 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "https://picsum.photos/200",
+    "image": "/img/marquee/waynescoffee.svg",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
+      "name": "Odengatan 94",
+      "postalCode": "11322",
       "city": "Stockholm"
     }
   },
@@ -21,13 +21,13 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "https://picsum.photos/200",
+    "image": "/img/marquee/tim hortons.png",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
+      "name": "Odengatan 94",
+      "postalCode": "11322",
       "city": "Stockholm"
     }
   },
@@ -37,13 +37,13 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "https://picsum.photos/200",
+    "image": "/img/marquee/espressohouse.png",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
+      "name": "Odengatan 94",
+      "postalCode": "11322",
       "city": "Stockholm"
     }
   },
@@ -53,77 +53,13 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "https://picsum.photos/200",
+    "image": "/img/marquee/espressohouse.png",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
-      "city": "Stockholm"
-    }
-  },
-  {
-    "id": 3,
-    "companyName": "Starbucks",
-    "vatNr": 32323,
-    "phoneNumber": "+46434234234",
-    "email": "company@email.com",
-    "image": "https://picsum.photos/200",
-    "openingHours": {
-      "hours": "9-21"
-    },
-    "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
-      "city": "Stockholm"
-    }
-  },
-  {
-    "id": 3,
-    "companyName": "Starbucks",
-    "vatNr": 32323,
-    "phoneNumber": "+46434234234",
-    "email": "company@email.com",
-    "image": "https://picsum.photos/200",
-    "openingHours": {
-      "hours": "9-21"
-    },
-    "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
-      "city": "Stockholm"
-    }
-  },
-  {
-    "id": 3,
-    "companyName": "Starbucks",
-    "vatNr": 32323,
-    "phoneNumber": "+46434234234",
-    "email": "company@email.com",
-    "image": "https://picsum.photos/200",
-    "openingHours": {
-      "hours": "9-21"
-    },
-    "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
-      "city": "Stockholm"
-    }
-  },
-  {
-    "id": 3,
-    "companyName": "Starbucks",
-    "vatNr": 32323,
-    "phoneNumber": "+46434234234",
-    "email": "company@email.com",
-    "image": "https://picsum.photos/200",
-    "openingHours": {
-      "hours": "9-21"
-    },
-    "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
+      "name": "Odengatan 94",
+      "postalCode": "11322",
       "city": "Stockholm"
     }
   },
@@ -133,13 +69,13 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "https://picsum.photos/200",
+    "image": "/img/marquee/espressohouse.png",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
+      "name": "Odengatan 94",
+      "postalCode": "11322",
       "city": "Stockholm"
     }
   },
@@ -149,13 +85,13 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "https://picsum.photos/200",
+    "image": "/img/marquee/espressohouse.png",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
+      "name": "Odengatan 94",
+      "postalCode": "11322",
       "city": "Stockholm"
     }
   },
@@ -165,13 +101,13 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "https://picsum.photos/200",
+    "image": "/img/marquee/espressohouse.png",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 93",
-      "postalCode": "11441",
+      "name": "Odengatan 94",
+      "postalCode": "11322",
       "city": "Stockholm"
     }
   }

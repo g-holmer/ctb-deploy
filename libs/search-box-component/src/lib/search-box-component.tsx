@@ -24,7 +24,6 @@ export const SearchBoxComponent = (props: Props) => {
       query: { pid: data.cafe },
     });
   };
-  console.log(navigatorPosition);
 
   const renderSearchBox = (
     <SearchBox isHeader={props.isHeader}>
