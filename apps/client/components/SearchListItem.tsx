@@ -28,6 +28,7 @@ const SearchListItem = (props: Props) => {
         </Typography>
         <Typography color="secondary">Closed</Typography>
       </ListItemDetails>
+      <Box>{props.distance} meters away</Box>
     </ListItem>
   );
 };

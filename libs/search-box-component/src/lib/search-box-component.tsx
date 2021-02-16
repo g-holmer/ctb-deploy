@@ -6,6 +6,8 @@ import { theme } from '@ctb/dark-theme-provider';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '@ctb/auth-context';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 export interface Props {
   isHeader: boolean;
 }
@@ -17,7 +19,7 @@ export const SearchBoxComponent = (props: Props) => {
   const { register, handleSubmit, watch, errors } = useForm({});
 
   const { navigatorPosition, triggerNavigator }: any = useContext(AuthContext);
-
+  const isDesktop = useMediaQuery('(min-width:768px)');
   const onSubmit = (data) => {
     router.push({
       pathname: '/search/[pid]',
@@ -26,33 +28,39 @@ export const SearchBoxComponent = (props: Props) => {
   };
 
   const renderSearchBox = (
-    <SearchBox isHeader={props.isHeader}>
+    <SearchBox isHeader={props.isHeader} isSearch={isSearch}>
       <>
         <Form isHeader={props.isHeader} onSubmit={handleSubmit(onSubmit)}>
-          <TextField
-            style={{ width: '230px', margin: '10px' }}
-            id="outlined-basic"
-            label="Enter café"
-            defaultValue={router.query.pid && router.query.pid}
-            variant="outlined"
-            name="cafe"
-            inputRef={register()}
-          />
-          {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
-          <TextField
-            style={{ width: '230px', margin: '10px' }}
-            id="outlined-basic"
-            label="Enter city, location or area"
-            variant="outlined"
-            name="location"
-            type="text"
-            onFocus={() => !navigatorPosition && triggerNavigator()}
-            inputRef={register()}
-          />
-          {/* <div style={{ color: 'red' }}>{errors.password?.message}</div> */}
-
+          <Box>
+            <TextField
+              style={{ width: '230px', margin: '10px' }}
+              id="outlined-basic"
+              label="Enter café"
+              defaultValue={router.query.pid}
+              variant="outlined"
+              name="cafe"
+              inputRef={register()}
+            />
+            {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
+            <TextField
+              style={{ width: '230px', margin: '10px' }}
+              id="outlined-basic"
+              label="Enter city, location or area"
+              variant="outlined"
+              name="location"
+              type="text"
+              onFocus={() => !navigatorPosition && triggerNavigator()}
+              inputRef={register()}
+            />
+            {/* <div style={{ color: 'red' }}>{errors.password?.message}</div> */}
+          </Box>
           <Button
-            style={{ margin: '10px' }}
+            style={{
+              margin: '10px',
+              width: '230px',
+              height: '56px',
+              alignSelf: 'center',
+            }}
             color="primary"
             variant="contained"
             type="submit"
@@ -65,7 +73,9 @@ export const SearchBoxComponent = (props: Props) => {
   );
   return (
     <ThemeProvider theme={theme}>
-      {isSearch ? renderSearchBox : !props.isHeader && renderSearchBox}
+      {isSearch && isDesktop
+        ? renderSearchBox
+        : !props.isHeader && renderSearchBox}
     </ThemeProvider>
   );
 };
@@ -74,17 +84,38 @@ export const SearchBox = styled(Box)`
 
   flex-direction: column;
   min-width: 300px;
-  background: ${(props) => (props.isHeader ? 'inherit' : '#333333')};
+  background: ${(props) => (props.isSearch ? '#111' : '#333333')};
 
   color: white;
   padding: ${(props) => (props.isHeader ? '0' : '20px')};
   margin-bottom: ${(props) => (props.isHeader ? '10px' : '0')};
-  border-radius: 30px;
+  border-radius: ${(props) => (props.isSearch ? '0' : '30px')};
 `;
 export const Form = styled.form`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-  flex-direction: ${(props) => (props.isHeader ? 'row' : 'column')};
+  div {
+    display: flex;
+
+    flex-direction: ${(props) => (props.isHeader ? 'row' : 'column')};
+    input {
+      width: 90% !important;
+    }
+    @media (min-width: 768px) {
+      flex-direction: ${(props) => (props.isHeader ? 'row' : 'column')};
+      width: ${(props) => (props.isHeader ? '100%' : 'inherit')};
+      max-width: 500px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: ${(props) => (props.isHeader ? 'row' : 'column')};
+    max-width: 740px;
+    justify-content: flex-start;
+  }
 `;
 
 export default SearchBoxComponent;
