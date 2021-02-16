@@ -33,6 +33,14 @@ const images = [
     id: 5,
     imgSrc: '/img/marquee/waynescoffee.svg',
   },
+  {
+    id: 6,
+    imgSrc: '/img/marquee/tim hortons.png',
+  },
+  {
+    id: 7,
+    imgSrc: '/img/marquee/waynescoffee.svg',
+  },
 ];
 
 interface Props {}
@@ -69,7 +77,7 @@ const homePage = (props: Props) => {
 
         <Marquee velocity={120} resetAfterTries={50}>
           {images.map((item) => (
-            <Motion key={`child-${item.id}`} velocity={0} radius={150}>
+            <Motion key={`child-${item.id}`} velocity={0} radius={100}>
               <ImageWrapper>
                 <Image src={item.imgSrc} layout="fill" objectfit="contain" />
               </ImageWrapper>

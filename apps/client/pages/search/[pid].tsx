@@ -149,9 +149,9 @@ const App = () => {
                   id: 'age-native-helper',
                 }}
               >
-                <option value={10}>All</option>
-                <option value={10}>Open</option>
-                <option value={20}>Closed</option>
+                <option value={'all'}>All</option>
+                <option value={'open'}>Open</option>
+                <option value={'closed'}>Closed</option>
               </NativeSelect>
             </FormControl>
             <FormControl>
