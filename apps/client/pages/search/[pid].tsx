@@ -35,8 +35,8 @@ const AnyReactComponent = ({ text, image }) => {
 const MarkerWrapper = styled.div`
   clip-path: circle(50%);
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 `;
 // import Marker from './components/Marker';
@@ -52,7 +52,8 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
   const isDesktop = useMediaQuery('(min-width:768px)');
 
-  const [age, setAge] = React.useState<string>('');
+  const [filter, setFilter] = React.useState<string>('');
+  const [sortBy, setSortBy] = React.useState<string>('distance');
   const [places, setPlaces] = useState([]);
   const {
     navigatorPosition,
@@ -98,6 +99,39 @@ const App = () => {
         .toLowerCase()
         .includes(router.query.pid.toLowerCase());
     });
+  if (sortBy && sortBy) {
+    let sort;
+
+    let av;
+    let bv;
+
+    navigatorPosition &&
+      filteredData.sort(function (a, b) {
+        if (sortBy === 'distance') {
+          return getDistance(a) - getDistance(b);
+        } else if (sortBy === 'az' || sortBy === 'za') {
+          let nameA;
+          let nameB;
+          if (sortBy === 'az') {
+            nameA = a.companyName.toUpperCase();
+            nameB = b.companyName.toUpperCase();
+          } else {
+            nameB = a.companyName.toUpperCase();
+            nameA = b.companyName.toUpperCase();
+          }
+
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+
+          // names must be equal
+          return 0;
+        }
+      });
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -108,8 +142,8 @@ const App = () => {
             <FormControl>
               <InputLabel id="demo-simple-select">Filter</InputLabel>
               <NativeSelect
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
                 inputProps={{
                   name: 'age',
                   id: 'age-native-helper',
@@ -118,6 +152,21 @@ const App = () => {
                 <option value={10}>All</option>
                 <option value={10}>Open</option>
                 <option value={20}>Closed</option>
+              </NativeSelect>
+            </FormControl>
+            <FormControl>
+              <InputLabel id="demo-simple-select">Sort By:</InputLabel>
+              <NativeSelect
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                inputProps={{
+                  name: 'age',
+                  id: 'age-native-helper',
+                }}
+              >
+                <option value="distance">Distance</option>
+                <option value="az">A-Z</option>
+                <option value="za">Z-A</option>
               </NativeSelect>
             </FormControl>
             <Typography
@@ -151,7 +200,7 @@ const App = () => {
               })}
           </StyledTransitionGroup>
         </SearchList>
-        <Wrapper>
+        {/* <Wrapper>
           {navigatorPosition && (
             <GoogleMapReact
               bootstrapURLKeys={{
@@ -175,7 +224,7 @@ const App = () => {
               })}
             </GoogleMapReact>
           )}
-        </Wrapper>
+        </Wrapper> */}
       </Search>
     </ThemeProvider>
   );
