@@ -73,12 +73,12 @@ export const AuthContextProvider = (props: Props) => {
       .then((data) => data.json())
       .then((data) => {
         data.map(async (item) => {
-          const response = await Geocode.fromAddress(
-            `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
-          );
+          //   const response = await Geocode.fromAddress(
+          //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+          //   );
 
-          const { lat, lng } =
-            response && response.results[0].geometry.location;
+          //   const { lat, lng } =
+          //     response && response.results[0].geometry.location; // DON'T FORGET TO UNCOMMENT OUT THIS LATER
 
           const options = {
             id: item.id,
@@ -90,8 +90,10 @@ export const AuthContextProvider = (props: Props) => {
             openingHours: item.openingHours,
             adress: item.adress,
             coordinates: {
-              lat,
-              lng,
+              //   lat, DON'T FORGET TO UNCOMMENT OUT THIS LATER
+              //   lng, DON'T FORGET TO UNCOMMENT OUT THIS LATER
+              lat: 22, //temporarily
+              lng: 33, //temporarily
             },
           };
           setCompaniesMockData((prevState) => [...prevState, options]);

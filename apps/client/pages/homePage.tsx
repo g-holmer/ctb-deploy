@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Typography, Box } from '@material-ui/core';
 
@@ -8,44 +8,12 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from '@ctb/dark-theme-provider';
 
 import { SearchBoxComponent } from '@ctb/search-box-component';
-const images = [
-  {
-    id: 0,
-    imgSrc: '/img/marquee/caribou-cafe.png',
-  },
-  {
-    id: 1,
-    imgSrc: '/img/marquee/dunkin.png',
-  },
-  {
-    id: 2,
-    imgSrc: '/img/marquee/espressohouse.png',
-  },
-  {
-    id: 3,
-    imgSrc: '/img/marquee/Starbucks_Corporation_Logo_2011.svg.png',
-  },
-  {
-    id: 4,
-    imgSrc: '/img/marquee/tim hortons.png',
-  },
-  {
-    id: 5,
-    imgSrc: '/img/marquee/waynescoffee.svg',
-  },
-  {
-    id: 6,
-    imgSrc: '/img/marquee/tim hortons.png',
-  },
-  {
-    id: 7,
-    imgSrc: '/img/marquee/waynescoffee.svg',
-  },
-];
+import { AuthContext } from '@ctb/auth-context';
 
 interface Props {}
 
 const homePage = (props: Props) => {
+  const { companiesMockData }: any = useContext(AuthContext);
   return (
     <ThemeProvider theme={theme}>
       <Home>
@@ -76,13 +44,14 @@ const homePage = (props: Props) => {
         </OnboardingContent>
 
         <Marquee velocity={120} resetAfterTries={50}>
-          {images.map((item) => (
-            <Motion key={`child-${item.id}`} velocity={0} radius={100}>
-              <ImageWrapper>
-                <Image src={item.imgSrc} layout="fill" objectfit="contain" />
-              </ImageWrapper>
-            </Motion>
-          ))}
+          {companiesMockData &&
+            companiesMockData.map((item) => (
+              <Motion key={`child-${item.id}`} velocity={0} radius={100}>
+                <ImageWrapper>
+                  <Image src={item.image} layout="fill" objectfit="contain" />
+                </ImageWrapper>
+              </Motion>
+            ))}
         </Marquee>
       </Home>
     </ThemeProvider>

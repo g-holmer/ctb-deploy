@@ -100,15 +100,11 @@ const App = () => {
         .includes(router.query.pid.toLowerCase());
     });
   if (sortBy && sortBy) {
-    let sort;
-
-    let av;
-    let bv;
-
     navigatorPosition &&
       filteredData.sort(function (a, b) {
         if (sortBy === 'distance') {
-          return getDistance(a) - getDistance(b);
+          //   return getDistance(a) - getDistance(b); !! DON'T FORGET TO UNCOMMENT THIS LATER!!
+          return a - b; //temporarily
         } else if (sortBy === 'az' || sortBy === 'za') {
           let nameA;
           let nameB;
@@ -192,7 +188,8 @@ const App = () => {
                       image={item.image}
                       openingHours={item.openingHours}
                       adress={item.adress}
-                      distance={navigatorPosition && getDistance(item)}
+                      //   distance={navigatorPosition && getDistance(item)} !! DON'T FORGET TO UNCOMMENT THIS LATER!!
+                      distance={500} //temporarily
                       key={item.id}
                     />
                   </CSSTransition>

@@ -94,5 +94,53 @@
       "postalCode": "11322",
       "city": "Stockholm"
     }
+  },
+  {
+    "id": 7,
+    "companyName": "Coffee House",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "openingHours": {
+      "hours": "9-21"
+    },
+    "adress": {
+      "name": "Dalagatan 67",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  },
+  {
+    "id": 8,
+    "companyName": "Coffee House 2",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "openingHours": {
+      "hours": "9-21"
+    },
+    "adress": {
+      "name": "Dalagatan 22",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  },
+  {
+    "id": 9,
+    "companyName": "Coffee House 3",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "openingHours": {
+      "hours": "9-21"
+    },
+    "adress": {
+      "name": "Dalagatan 12",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
   }
 ]
