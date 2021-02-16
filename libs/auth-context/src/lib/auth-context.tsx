@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import { auth, googleProvider } from '@ctb/firebase-auth';
 import React from 'react';
 import Geocode from 'react-geocode';
+import { useRouter } from 'next/router';
 export const AuthContext = React.createContext({});
 
 interface Props {
@@ -63,8 +64,11 @@ export const AuthContextProvider = (props: Props) => {
     if (!navigatorPosition)
       navigator.geolocation.getCurrentPosition(success, error, options);
   };
-
+  const router = useRouter();
   useEffect(() => {
+    router.events.on('routeChangeComplete', () => {
+      window.scrollTo(0, 0);
+    });
     fetch('https://api.npoint.io/aa0072667ed15c6790e1')
       .then((data) => data.json())
       .then((data) => {

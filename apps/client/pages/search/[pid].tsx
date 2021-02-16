@@ -80,7 +80,7 @@ const App = () => {
             );
           })}
       </SearchList>
-      <Wrapper>
+      {/* <Wrapper>
         {navigatorPosition && (
           <GoogleMapReact
             bootstrapURLKeys={{
@@ -89,17 +89,17 @@ const App = () => {
             defaultZoom={13}
             defaultCenter={[navigatorPosition.lat, navigatorPosition.lng]}
           >
-            {/* {places.map((place) => (
+            {places.map((place) => (
               <Marker
                 key={place.id}
                 text={place.name}
                 lat={place.geometry.location.lat}
                 lng={place.geometry.location.lng}
               />
-            ))} */}
+            ))}
           </GoogleMapReact>
         )}
-      </Wrapper>
+      </Wrapper> */}
     </Search>
   );
 };

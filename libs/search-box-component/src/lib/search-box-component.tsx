@@ -33,6 +33,7 @@ export const SearchBoxComponent = (props: Props) => {
             style={{ width: '230px', margin: '10px' }}
             id="outlined-basic"
             label="Enter café"
+            defaultValue={router.query.pid && router.query.pid}
             variant="outlined"
             name="cafe"
             inputRef={register()}
