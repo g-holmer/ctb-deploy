@@ -15,7 +15,7 @@ export const AuthContextProvider = (props: Props) => {
   const [navigatorPosition, setNavigatorPosition] = useState<any>(null);
   const [companiesMockData, setCompaniesMockData] = useState<any>([]);
 
-  Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
+  //   Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY); DON'T FORGET TO UNCOMMENT THIS
 
   const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password);
@@ -44,7 +44,8 @@ export const AuthContextProvider = (props: Props) => {
       const crd = pos.coords;
       const latitude = crd.latitude;
       const longitude = crd.longitude;
-      //   const accuracy = crd.accuracy;
+      const accuracy = crd.accuracy;
+
       setNavigatorPosition({
         lat: latitude,
         lng: longitude,
