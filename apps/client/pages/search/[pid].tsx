@@ -13,12 +13,6 @@ import { useRouter } from 'next/router';
 
 // import Marker from './components/Marker';
 
-const Wrapper = styled.main`
-  width: 700px;
-  height: 700px;
-  float: right;
-`;
-
 const App = () => {
   const [places, setPlaces] = useState([]);
   const {
@@ -88,32 +82,43 @@ const App = () => {
       </SearchList>
       <Wrapper>
         {navigatorPosition && (
-          // <GoogleMapReact
-          //   bootstrapURLKeys={{
-          //     key: process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY,
-          //   }}
-          //   defaultZoom={13}
-          //   defaultCenter={[navigatorPosition.lat, navigatorPosition.lng]}
-          // >
-          //   {/* {places.map((place) => (
-          //     <Marker
-          //       key={place.id}
-          //       text={place.name}
-          //       lat={place.geometry.location.lat}
-          //       lng={place.geometry.location.lng}
-          //     />
-          //   ))} */}
-          // </GoogleMapReact>
-          <div></div>
+          <GoogleMapReact
+            bootstrapURLKeys={{
+              key: process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY,
+            }}
+            defaultZoom={13}
+            defaultCenter={[navigatorPosition.lat, navigatorPosition.lng]}
+          >
+            {/* {places.map((place) => (
+              <Marker
+                key={place.id}
+                text={place.name}
+                lat={place.geometry.location.lat}
+                lng={place.geometry.location.lng}
+              />
+            ))} */}
+          </GoogleMapReact>
         )}
       </Wrapper>
     </Search>
   );
 };
 const Search = styled(Box)`
+  display: flex;
+  justify-content: space-between;
   padding-top: 86px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #c8dbe1;
 `;
 const SearchList = styled(Box)`
   margin: 4vw;
+`;
+const Wrapper = styled.div`
+  position: fixed;
+  width: 700px;
+  height: 700px;
+  float: right;
+  right: 0;
 `;
 export default App;
