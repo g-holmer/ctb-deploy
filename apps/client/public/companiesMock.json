@@ -26,23 +26,7 @@
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 94",
-      "postalCode": "11322",
-      "city": "Stockholm"
-    }
-  },
-  {
-    "id": 2,
-    "companyName": "Starbucks",
-    "vatNr": 32323,
-    "phoneNumber": "+46434234234",
-    "email": "company@email.com",
-    "image": "/img/marquee/espressohouse.png",
-    "openingHours": {
-      "hours": "9-21"
-    },
-    "adress": {
-      "name": "Odengatan 94",
+      "name": "Teknologgatan 4",
       "postalCode": "11322",
       "city": "Stockholm"
     }
@@ -53,12 +37,12 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/espressohouse.png",
+    "image": "/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 94",
+      "name": "Torsgatan 34",
       "postalCode": "11322",
       "city": "Stockholm"
     }
@@ -69,12 +53,12 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/espressohouse.png",
+    "image": "/img/marquee/dunkin.png",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 94",
+      "name": "Sveavägen 12",
       "postalCode": "11322",
       "city": "Stockholm"
     }
@@ -85,12 +69,12 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/espressohouse.png",
+    "image": "/img/marquee/caribou-cafe.png",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 94",
+      "name": "Rörstrandsgatan 44",
       "postalCode": "11322",
       "city": "Stockholm"
     }
@@ -101,12 +85,12 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/espressohouse.png",
+    "image": "/img/marquee/tim hortons.png",
     "openingHours": {
       "hours": "9-21"
     },
     "adress": {
-      "name": "Odengatan 94",
+      "name": "Dalagatan 12",
       "postalCode": "11322",
       "city": "Stockholm"
     }

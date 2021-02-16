@@ -69,7 +69,7 @@ export const AuthContextProvider = (props: Props) => {
     router.events.on('routeChangeComplete', () => {
       window.scrollTo(0, 0);
     });
-    fetch('https://api.npoint.io/aa0072667ed15c6790e1')
+    fetch('/companiesMock.json')
       .then((data) => data.json())
       .then((data) => {
         data.map(async (item) => {

@@ -20,10 +20,25 @@ import { theme } from '@ctb/theme-provider';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { SearchBoxComponent } from '@ctb/search-box-component';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Image from 'next/image';
 // import 'google-map-react/dist/index.css'
 
 // import LOS_ANGELES_CENTER from './const/la_center';
+const AnyReactComponent = ({ text, image }) => {
+  return (
+    <MarkerWrapper>
+      <Image src={image} layout="fill" objectfit="contain" />
+    </MarkerWrapper>
+  );
+};
 
+const MarkerWrapper = styled.div`
+  clip-path: circle(50%);
+  position: relative;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+`;
 // import Marker from './components/Marker';
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -100,10 +115,9 @@ const App = () => {
                   id: 'age-native-helper',
                 }}
               >
-                <option aria-label="None" value="" />
-                <option value={10}>Ten</option>
-                <option value={20}>Twenty</option>
-                <option value={30}>Thirty</option>
+                <option value={10}>All</option>
+                <option value={10}>Open</option>
+                <option value={20}>Closed</option>
               </NativeSelect>
             </FormControl>
             <Typography
@@ -137,7 +151,7 @@ const App = () => {
               })}
           </StyledTransitionGroup>
         </SearchList>
-        {/* <Wrapper>
+        <Wrapper>
           {navigatorPosition && (
             <GoogleMapReact
               bootstrapURLKeys={{
@@ -146,17 +160,22 @@ const App = () => {
               defaultZoom={13}
               defaultCenter={[navigatorPosition.lat, navigatorPosition.lng]}
             >
-              {places.map((place) => (
-                <Marker
-                  key={place.id}
-                  text={place.name}
-                  lat={place.geometry.location.lat}
-                  lng={place.geometry.location.lng}
-                />
-              ))}
+              {filteredData.map((place) => {
+                console.log(place);
+
+                return (
+                  <AnyReactComponent
+                    key={place.id}
+                    text={place.companyName}
+                    image={place.image}
+                    lat={place.coordinates.lat}
+                    lng={place.coordinates.lng}
+                  />
+                );
+              })}
             </GoogleMapReact>
           )}
-        </Wrapper> */}
+        </Wrapper>
       </Search>
     </ThemeProvider>
   );
@@ -183,12 +202,17 @@ const StyledTransitionGroup = styled(TransitionGroup)`
 `;
 const Search = styled(Box)`
   display: flex;
-  justify-content: space-between;
-  margin-top: 86px;
 
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
   background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
     #c8dbe1;
+  @media (min-width: 768px) {
+    margin-top: 86px;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 `;
 const SearchList = styled(Box)`
   min-width: 300px;
@@ -204,8 +228,11 @@ const SearchListTop = styled(Box)`
 
 const Wrapper = styled.div`
   position: fixed;
-  width: 700px;
-
+  display: none;
+  width: 50vw;
+  @media (min-width: 768px) {
+    display: block;
+  }
   height: 700px;
   right: 0;
 `;
