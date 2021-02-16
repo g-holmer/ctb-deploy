@@ -4,7 +4,7 @@ import React from 'react';
 import Geocode from 'react-geocode';
 import { useRouter } from 'next/router';
 export const AuthContext = React.createContext({});
-
+import styled from 'styled-components';
 interface Props {
   children: any;
 }
@@ -122,7 +122,10 @@ export const AuthContextProvider = (props: Props) => {
         companiesMockData,
       }}
     >
-      {props.children}
+      <FontWrapper>{props.children}</FontWrapper>
     </AuthContext.Provider>
   );
 };
+const FontWrapper = styled.div`
+  font-family: Helvetica;
+`;

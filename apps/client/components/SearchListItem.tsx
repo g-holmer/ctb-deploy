@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import styled from 'styled-components';
 import Image from 'next/image';
+
 interface Props {
   companyName: string;
   vatNr: string;
@@ -14,8 +15,6 @@ interface Props {
 }
 
 const SearchListItem = (props: Props) => {
-  console.log(props.image);
-
   return (
     <ListItem>
       <ImageWrapper>
@@ -28,7 +27,13 @@ const SearchListItem = (props: Props) => {
         </Typography>
         <Typography color="secondary">Closed</Typography>
       </ListItemDetails>
-      <Box>{props.distance} meters away</Box>
+      {props.distance && <Box>{props.distance} meters away</Box>}
+      <Image
+        src={'/angle-right.svg'}
+        height="20"
+        width="20"
+        objectfit="contain"
+      />
     </ListItem>
   );
 };
@@ -42,11 +47,13 @@ const ImageWrapper = styled.div`
 const ListItem = styled(Box)`
   cursor: pointer;
   display: flex;
+  justify-content: space-between;
   background: #ffffff;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 40px;
   filter: drop-shadow(0px 6px 10px rgba(0, 0, 0, 0.6));
+  transition: all 0.1s ease-in;
 `;
 const ListItemDetails = styled(Box)`
   margin: 20px;

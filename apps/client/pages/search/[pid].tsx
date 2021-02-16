@@ -19,7 +19,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from '@ctb/theme-provider';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { SearchBoxComponent } from '@ctb/search-box-component';
-
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // import 'google-map-react/dist/index.css'
 
 // import LOS_ANGELES_CENTER from './const/la_center';
@@ -116,22 +116,26 @@ const App = () => {
               {filteredData.length} hits
             </Typography>
           </SearchListTop>
-          {filteredData &&
-            filteredData.map((item) => {
-              return (
-                <SearchListItem
-                  companyName={item.companyName}
-                  vatNr={item.vatNr}
-                  phoneNumber={item.phoneNumber}
-                  email={item.email}
-                  image={item.image}
-                  openingHours={item.openingHours}
-                  adress={item.adress}
-                  distance={navigatorPosition && getDistance(item)}
-                  key={item.id}
-                />
-              );
-            })}
+          <StyledTransitionGroup>
+            {filteredData &&
+              filteredData.map((item) => {
+                return (
+                  <CSSTransition key={item.id} timeout={500} classNames="item">
+                    <SearchListItem
+                      companyName={item.companyName}
+                      vatNr={item.vatNr}
+                      phoneNumber={item.phoneNumber}
+                      email={item.email}
+                      image={item.image}
+                      openingHours={item.openingHours}
+                      adress={item.adress}
+                      distance={navigatorPosition && getDistance(item)}
+                      key={item.id}
+                    />
+                  </CSSTransition>
+                );
+              })}
+          </StyledTransitionGroup>
         </SearchList>
         {/* <Wrapper>
           {navigatorPosition && (
@@ -157,6 +161,26 @@ const App = () => {
     </ThemeProvider>
   );
 };
+const StyledTransitionGroup = styled(TransitionGroup)`
+  .remove-btn {
+    margin-right: 0.5rem;
+  }
+
+  .item-enter {
+    opacity: 0;
+  }
+  .item-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  .item-exit {
+    opacity: 1;
+  }
+  .item-exit-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+  }
+`;
 const Search = styled(Box)`
   display: flex;
   justify-content: space-between;

@@ -6,12 +6,13 @@ import styled from 'styled-components';
 export interface FooterProps {}
 
 const StyledFooter = styled.footer`
-  position: relative;
+  top: 61px;
   box-shadow: 0px -12px 35px rgba(0, 0, 0, 0.6);
   width: 100%;
   background: #111;
   min-height: 70px;
   color: #f5f5f5;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,7 +44,7 @@ const StyledFooter = styled.footer`
 export function Footer(props: FooterProps) {
   return (
     <StyledFooter>
-      {/* <nav>
+      <nav>
         <ul>
           <li>
             <Link href="">
@@ -61,7 +62,7 @@ export function Footer(props: FooterProps) {
             </Link>
           </li>
         </ul>
-      </nav> */}
+      </nav>
     </StyledFooter>
   );
 }

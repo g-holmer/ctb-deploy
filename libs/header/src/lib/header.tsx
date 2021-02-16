@@ -47,7 +47,7 @@ const StyledHeader = styled.header`
   color: #f5f5f5;
   display: flex;
   flex-direction: column;
-
+  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.6);
   justify-content: space-between;
   border-bottom: 1px solid #5c5c5c;
 
