@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import styled from 'styled-components';
 import MarkerCard from './MarkerCard';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 interface Props {
   companyName: string;
@@ -32,23 +33,50 @@ const Marker = (props: Props) => {
       <MarkerWrapper onClick={() => setIsOpen(!isOpen)}>
         <InnerMarker />
       </MarkerWrapper>
-      {isOpen && (
-        <MarkerCard
-          node={node}
-          key={props.id}
-          companyName={props.companyName}
-          phoneNumber={props.phoneNumber}
-          adress={props.adress}
-          image={props.image}
-          openingHours={props.openingHours}
-          //   distance={navigatorPosition && getDistance(item)} !! DON'T FORGET TO UNCOMMENT THIS LATER!!
-          distance={500} //temporarily
-        />
-      )}
+      <StyledTransitionGroup>
+        {isOpen && (
+          <CSSTransition
+            in={isOpen}
+            timeout={300}
+            classNames="alert"
+            unmountOnExit
+          >
+            <MarkerCard
+              node={node}
+              key={props.id}
+              companyName={props.companyName}
+              phoneNumber={props.phoneNumber}
+              adress={props.adress}
+              image={props.image}
+              openingHours={props.openingHours}
+              //   distance={navigatorPosition && getDistance(item)} !! DON'T FORGET TO UNCOMMENT THIS LATER!!
+              distance={500} //temporarily
+            />
+          </CSSTransition>
+        )}
+      </StyledTransitionGroup>
     </>
   );
 };
-
+const StyledTransitionGroup = styled(TransitionGroup)`
+  .alert-enter {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  .alert-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .alert-exit {
+    opacity: 1;
+  }
+  .alert-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+  }
+`;
 const MarkerWrapper = styled.div`
   cursor: pointer;
   display: flex;
