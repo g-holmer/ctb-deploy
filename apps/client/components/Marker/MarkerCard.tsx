@@ -13,7 +13,7 @@ interface Props {
 import { Typography, Box } from '@material-ui/core';
 const MarkerCard = (props: Props) => {
   return (
-    <Card ref={node}>
+    <Card ref={props.node}>
       <ImageWrapper>
         <Image src={props.image} layout="fill" objectfit="contain" />
       </ImageWrapper>
