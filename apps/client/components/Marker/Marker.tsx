@@ -37,12 +37,7 @@ const Marker = (props: Props) => {
       </MarkerWrapper>
       <StyledTransitionGroup>
         {isOpen && (
-          <CSSTransition
-            in={isOpen}
-            timeout={300}
-            classNames="alert"
-            unmountOnExit
-          >
+          <CSSTransition timeout={300} classNames="alert" unmountOnExit>
             <MarkerCard
               node={node}
               companyName={props.companyName}
