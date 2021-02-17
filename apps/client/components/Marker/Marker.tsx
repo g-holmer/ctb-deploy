@@ -11,6 +11,8 @@ interface Props {
   openingHours: any;
   adress: any;
   distance: number;
+  lat: number;
+  lng: number;
 }
 const Marker = (props: Props) => {
   const node = React.useRef();
@@ -43,7 +45,6 @@ const Marker = (props: Props) => {
           >
             <MarkerCard
               node={node}
-              key={props.id}
               companyName={props.companyName}
               phoneNumber={props.phoneNumber}
               adress={props.adress}

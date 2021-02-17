@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
-import { makeStyles } from '@material-ui/core/styles';
+
 import GoogleMapReact from 'google-map-react';
 import { AuthContext } from '@ctb/auth-context';
 import {
   Box,
   FormControl,
-  FormHelperText,
   NativeSelect,
-  MenuItem,
   InputLabel,
   Typography,
 } from '@material-ui/core';
@@ -24,26 +22,14 @@ import Marker from 'apps/client/components/Marker/Marker';
 
 // import 'google-map-react/dist/index.css'
 
-// import LOS_ANGELES_CENTER from './const/la_center';
-
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
-const App = () => {
+const SearchPid = () => {
   const isDesktop = useMediaQuery('(min-width:768px)');
 
   const [filter, setFilter] = React.useState<string>('');
   const [sortBy, setSortBy] = React.useState<string>('distance');
-  const [places, setPlaces] = useState([]);
+
   const {
     navigatorPosition,
-    setNavigatorPosition,
     triggerNavigator,
     companiesMockData,
   }: any = useContext(AuthContext);
@@ -51,19 +37,6 @@ const App = () => {
   useEffect(() => {
     triggerNavigator();
   }, []);
-  //   const fetchPlaces = async () => {
-  //     fetch('places.json')
-  //       .then((response) => response.json())
-  //       .then((data) => setPlaces(data.results));
-  //   };
-
-  //   useEffect(() => {
-  //     fetchPlaces();
-  //   }, []);
-
-  //   if (!places || places.length === 0) {
-  //     return null;
-  //   }
 
   const getDistance = (item) => {
     return geolib.getDistance(
@@ -81,9 +54,8 @@ const App = () => {
   const filteredData =
     companiesMockData &&
     companiesMockData.filter((item) => {
-      return item.companyName
-        .toLowerCase()
-        .includes(router.query.pid.toLowerCase());
+      const pid: any = router.query.pid;
+      return item.companyName.toLowerCase().includes(pid.toLowerCase());
     });
   if (sortBy && sortBy) {
     navigatorPosition &&
@@ -109,7 +81,6 @@ const App = () => {
             return 1;
           }
 
-          // names must be equal
           return 0;
         }
       });
@@ -273,4 +244,4 @@ const Wrapper = styled.div`
   height: 700px;
   right: 0;
 `;
-export default App;
+export default SearchPid;
