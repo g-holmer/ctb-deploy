@@ -39,3 +39,4 @@ testem.log
 Thumbs.db
 /apps/client/.env
 apps/client/.env.local
+*.local
