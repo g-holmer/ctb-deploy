@@ -20,26 +20,12 @@ import { theme } from '@ctb/theme-provider';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { SearchBoxComponent } from '@ctb/search-box-component';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import Image from 'next/image';
+import Marker from 'apps/client/components/Marker/Marker';
+
 // import 'google-map-react/dist/index.css'
 
 // import LOS_ANGELES_CENTER from './const/la_center';
-const AnyReactComponent = ({ text, image }) => {
-  return (
-    <MarkerWrapper>
-      <Image src={image} layout="fill" objectfit="contain" />
-    </MarkerWrapper>
-  );
-};
 
-const MarkerWrapper = styled.div`
-  clip-path: circle(50%);
-  position: relative;
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-`;
-// import Marker from './components/Marker';
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -197,7 +183,7 @@ const App = () => {
               })}
           </StyledTransitionGroup>
         </SearchList>
-        {/* <Wrapper>
+        <Wrapper>
           {navigatorPosition && (
             <GoogleMapReact
               bootstrapURLKeys={{
@@ -210,10 +196,15 @@ const App = () => {
                 console.log(place);
 
                 return (
-                  <AnyReactComponent
+                  <Marker
                     key={place.id}
-                    text={place.companyName}
+                    companyName={place.companyName}
+                    phoneNumber={place.phoneNumber}
+                    adress={place.adress}
                     image={place.image}
+                    openingHours={place.openingHours}
+                    //   distance={navigatorPosition && getDistance(item)} !! DON'T FORGET TO UNCOMMENT THIS LATER!!
+                    distance={500} //temporarily
                     lat={place.coordinates.lat}
                     lng={place.coordinates.lng}
                   />
@@ -221,7 +212,7 @@ const App = () => {
               })}
             </GoogleMapReact>
           )}
-        </Wrapper> */}
+        </Wrapper>
       </Search>
     </ThemeProvider>
   );

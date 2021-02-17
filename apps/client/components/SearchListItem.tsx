@@ -44,6 +44,7 @@ const ImageWrapper = styled.div`
   height: 150px;
   object-fit: contain;
 `;
+
 const ListItem = styled(Box)`
   cursor: pointer;
   display: flex;

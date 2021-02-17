@@ -93,8 +93,8 @@ export const AuthContextProvider = (props: Props) => {
             coordinates: {
               //   lat, DON'T FORGET TO UNCOMMENT OUT THIS LATER
               //   lng, DON'T FORGET TO UNCOMMENT OUT THIS LATER
-              lat: 22, //temporarily
-              lng: 33, //temporarily
+              lat: 59.334591, //temporarily
+              lng: 18.06324, //temporarily
             },
           };
           setCompaniesMockData((prevState) => [...prevState, options]);
