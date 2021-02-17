@@ -31,6 +31,7 @@
     "footer": { "tags": [] },
     "theme-provider": { "tags": [] },
     "dark-theme-provider": { "tags": [] },
-    "search-box-component": { "tags": [] }
+    "search-box-component": { "tags": [] },
+    "auto-complete": { "tags": [] }
   }
 }

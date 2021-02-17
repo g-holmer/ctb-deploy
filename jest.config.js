@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/libs/theme-provider',
     '<rootDir>/libs/dark-theme-provider',
     '<rootDir>/libs/search-box-component',
+    '<rootDir>/libs/auto-complete',
   ],
 };

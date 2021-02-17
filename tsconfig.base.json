@@ -21,7 +21,8 @@
       "@ctb/footer": ["libs/footer/src/index.ts"],
       "@ctb/theme-provider": ["libs/theme-provider/src/index.ts"],
       "@ctb/dark-theme-provider": ["libs/dark-theme-provider/src/index.ts"],
-      "@ctb/search-box-component": ["libs/search-box-component/src/index.ts"]
+      "@ctb/search-box-component": ["libs/search-box-component/src/index.ts"],
+      "@ctb/auto-complete": ["libs/auto-complete/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

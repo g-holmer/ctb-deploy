@@ -6,6 +6,7 @@ import { Header } from '@ctb/header';
 import { Footer } from '@ctb/footer';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from '@ctb/theme-provider';
+import '@reach/combobox/styles.css';
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>

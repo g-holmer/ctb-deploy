@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '@ctb/auth-context';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import { AutoCompleteInput } from '@ctb/auto-complete';
 export interface Props {
   isHeader: boolean;
 }
@@ -41,19 +41,10 @@ export const SearchBoxComponent = (props: Props) => {
               name="cafe"
               inputRef={register()}
             />
-            {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
-            <TextField
-              style={{ width: '230px', margin: '10px' }}
-              id="outlined-basic"
-              label="Enter city, location or area"
-              variant="outlined"
-              name="location"
-              type="text"
-              onFocus={() => !navigatorPosition && triggerNavigator()}
-              inputRef={register()}
-            />
-            {/* <div style={{ color: 'red' }}>{errors.password?.message}</div> */}
+            <AutoCompleteInput />
           </Box>
+          {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
+
           <Button
             style={{
               margin: '10px',
