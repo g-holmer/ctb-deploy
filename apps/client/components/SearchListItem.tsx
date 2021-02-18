@@ -29,7 +29,7 @@ const SearchListItem = (props: Props) => {
       </ListItemDetails>
       {props.distance && <Box>{props.distance} meters away</Box>}
       <Image
-        src={'/angle-right.svg'}
+        src={'/static/angle-right.svg'}
         height="20"
         width="20"
         objectfit="contain"
