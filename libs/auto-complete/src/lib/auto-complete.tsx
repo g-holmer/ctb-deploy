@@ -9,7 +9,7 @@ import parse from 'autosuggest-highlight/parse';
 import throttle from 'lodash/throttle';
 import { AuthContext } from '@ctb/auth-context';
 
-function loadScript(src, position, id) {
+function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
     return;
   }
@@ -31,13 +31,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 /* eslint-disable-next-line */
 export interface AutoCompleteInputProps {}
+interface PlaceType {
+  description: string;
+  structured_formatting: {
+    main_text: string;
+    secondary_text: string;
+    main_text_matched_substrings: [
+      {
+        offset: number;
+        length: number;
+      }
+    ];
+  };
+}
 
 export function AutoCompleteInput(props: AutoCompleteInputProps) {
   const { navigatorPosition, triggerNavigator }: any = useContext(AuthContext);
   const classes = useStyles();
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState<PlaceType | null>(null);
   const [inputValue, setInputValue] = React.useState('');
-  const [options, setOptions] = React.useState([]);
+  const [options, setOptions] = React.useState<PlaceType[]>([]);
   const loaded = React.useRef(false);
 
   if (typeof window !== 'undefined' && !loaded.current) {
@@ -54,17 +67,26 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
 
   const fetch = React.useMemo(
     () =>
-      throttle((request, callback) => {
-        autocompleteService.current.getPlacePredictions(request, callback);
-      }, 200),
+      throttle(
+        (
+          request: { input: string },
+          callback: (results?: PlaceType[]) => void
+        ) => {
+          (autocompleteService.current as any).getPlacePredictions(
+            request,
+            callback
+          );
+        },
+        200
+      ),
     []
   );
 
   React.useEffect(() => {
     let active = true;
 
-    if (!autocompleteService.current && window.google) {
-      autocompleteService.current = new window.google.maps.places.AutocompleteService();
+    if (!autocompleteService.current && (window as any).google) {
+      autocompleteService.current = new (window as any).google.maps.places.AutocompleteService();
     }
     if (!autocompleteService.current) {
       return undefined;
@@ -75,9 +97,9 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
       return undefined;
     }
 
-    fetch({ input: inputValue }, (results) => {
+    fetch({ input: inputValue }, (results?: PlaceType[]) => {
       if (active) {
-        let newOptions = [];
+        let newOptions = [] as PlaceType[];
 
         if (value) {
           newOptions = [value];
@@ -99,18 +121,17 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
   return (
     <Autocomplete
       id="google-map-demo"
-      style={{ width: '230px', margin: '10px' }}
+      style={{ width: 230, margin: 10 }}
       getOptionLabel={(option) =>
         typeof option === 'string' ? option : option.description
       }
       filterOptions={(x) => x}
       options={options}
       autoComplete
-      onFocus={() => !navigatorPosition && triggerNavigator()}
       includeInputInList
       filterSelectedOptions
       value={value}
-      onChange={(event, newValue) => {
+      onChange={(event: any, newValue: PlaceType | null) => {
         setOptions(newValue ? [newValue, ...options] : options);
         setValue(newValue);
       }}
@@ -120,7 +141,8 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Add a location"
+          label="Enter city, location or area"
+          onFocus={() => !navigatorPosition && triggerNavigator()}
           variant="outlined"
           fullWidth
         />
@@ -130,7 +152,10 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
           option.structured_formatting.main_text_matched_substrings;
         const parts = parse(
           option.structured_formatting.main_text,
-          matches.map((match) => [match.offset, match.offset + match.length])
+          matches.map((match: any) => [
+            match.offset,
+            match.offset + match.length,
+          ])
         );
 
         return (
@@ -147,7 +172,6 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
                   {part.text}
                 </span>
               ))}
-
               <Typography variant="body2" color="textSecondary">
                 {option.structured_formatting.secondary_text}
               </Typography>

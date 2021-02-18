@@ -35,7 +35,7 @@ const homePage = (props: Props) => {
           </OnboardingText>
           <ImgWrapper>
             <Image
-              src="/img/queue.jpg"
+              src="/static/img/queue.jpg"
               alt="Picture of the author"
               width={500}
               height={350}
@@ -66,7 +66,7 @@ const Hero = styled(Box)`
 
   flex-wrap: wrap;
   justify-content: space-evenly;
-  background: url('/img/hero/coffee-hero.jpg') no-repeat center;
+  background: url('/static/img/hero/coffee-hero.jpg') no-repeat center;
   background-size: cover;
   max-width: 100vw;
   min-height: 470px;

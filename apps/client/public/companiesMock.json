@@ -5,7 +5,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/waynescoffee.svg",
+    "image": "/static/img/marquee/waynescoffee.svg",
     "openingHours": {
       "hours": "9-21"
     },
@@ -21,7 +21,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/tim hortons.png",
+    "image": "/static/img/marquee/tim hortons.png",
     "openingHours": {
       "hours": "9-21"
     },
@@ -37,7 +37,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
     "openingHours": {
       "hours": "9-21"
     },
@@ -53,7 +53,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/dunkin.png",
+    "image": "/static/img/marquee/dunkin.png",
     "openingHours": {
       "hours": "9-21"
     },
@@ -69,7 +69,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/caribou-cafe.png",
+    "image": "/static/img/marquee/caribou-cafe.png",
     "openingHours": {
       "hours": "9-21"
     },
@@ -85,7 +85,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/tim hortons.png",
+    "image": "/static/img/marquee/tim hortons.png",
     "openingHours": {
       "hours": "9-21"
     },
@@ -101,7 +101,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
     "openingHours": {
       "hours": "9-21"
     },
@@ -117,7 +117,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
     "openingHours": {
       "hours": "9-21"
     },
@@ -133,7 +133,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
     "openingHours": {
       "hours": "9-21"
     },

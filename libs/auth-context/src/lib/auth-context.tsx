@@ -15,7 +15,7 @@ export const AuthContextProvider = (props: Props) => {
   const [navigatorPosition, setNavigatorPosition] = useState<any>(null);
   const [companiesMockData, setCompaniesMockData] = useState<any>([]);
 
-  //   Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY); DON'T FORGET TO UNCOMMENT THIS
+  Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
 
   const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password);
@@ -74,12 +74,12 @@ export const AuthContextProvider = (props: Props) => {
       .then((data) => data.json())
       .then((data) => {
         data.map(async (item) => {
-          //   const response = await Geocode.fromAddress(
-          //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
-          //   );
+          const response = await Geocode.fromAddress(
+            `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+          );
 
-          //   const { lat, lng } =
-          //     response && response.results[0].geometry.location; // DON'T FORGET TO UNCOMMENT OUT THIS LATER
+          const { lat, lng } =
+            response && response.results[0].geometry.location; // DON'T FORGET TO UNCOMMENT OUT THIS LATER
 
           const options = {
             id: item.id,
@@ -91,22 +91,22 @@ export const AuthContextProvider = (props: Props) => {
             openingHours: item.openingHours,
             adress: item.adress,
             coordinates: {
-              //   lat, DON'T FORGET TO UNCOMMENT OUT THIS LATER
-              //   lng, DON'T FORGET TO UNCOMMENT OUT THIS LATER
-              lat: 59.334591, //temporarily
-              lng: 18.06324, //temporarily
+              lat,
+              lng,
+              //   lat: 59.334591, //temporarily
+              //   lng: 18.06324, //temporarily
             },
           };
           setCompaniesMockData((prevState) => [...prevState, options]);
         });
       });
-
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
     return unsubscribe;
   }, []);
 
+  console.log(companiesMockData);
   return (
     <AuthContext.Provider
       value={{
