@@ -31,9 +31,8 @@ export const SearchBoxComponent = (props: Props) => {
     <SearchBox isHeader={props.isHeader} isSearch={isSearch}>
       <>
         <Form isHeader={props.isHeader} onSubmit={handleSubmit(onSubmit)}>
-          <Box>
+          <TextFieldWrapper isHeader={props.isHeader}>
             <TextField
-              style={{ width: '230px', margin: '10px' }}
               id="outlined-basic"
               label="Enter café"
               defaultValue={router.query.pid}
@@ -41,8 +40,9 @@ export const SearchBoxComponent = (props: Props) => {
               name="cafe"
               inputRef={register()}
             />
-            <AutoCompleteInput />
-          </Box>
+
+            <AutoCompleteInput isHeader={props.isHeader} />
+          </TextFieldWrapper>
           {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
 
           <Button
@@ -70,6 +70,7 @@ export const SearchBoxComponent = (props: Props) => {
     </ThemeProvider>
   );
 };
+
 export const SearchBox = styled(Box)`
   display: flex;
 
@@ -82,25 +83,24 @@ export const SearchBox = styled(Box)`
   margin-bottom: ${(props) => (props.isHeader ? '10px' : '0')};
   border-radius: ${(props) => (props.isSearch ? '0' : '30px')};
 `;
+export const TextFieldWrapper = styled.div`
+  margin-left: ${(props) => (props.isHeader ? '10px' : '0')};
+  display: flex;
+
+  flex-direction: ${(props) => (props.isHeader ? 'row' : 'column')};
+
+  input {
+    width: 90% !important;
+  }
+  @media (min-width: 768px) {
+    max-width: 500px;
+  }
+`;
 export const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  div {
-    display: flex;
-
-    flex-direction: ${(props) => (props.isHeader ? 'row' : 'column')};
-    input {
-      width: 90% !important;
-    }
-    @media (min-width: 768px) {
-      flex-direction: ${(props) => (props.isHeader ? 'row' : 'column')};
-      width: ${(props) => (props.isHeader ? '100%' : 'inherit')};
-      max-width: 500px;
-    }
-  }
 
   @media (min-width: 768px) {
     flex-direction: ${(props) => (props.isHeader ? 'row' : 'column')};

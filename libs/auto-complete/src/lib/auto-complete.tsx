@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import parse from 'autosuggest-highlight/parse';
 import throttle from 'lodash/throttle';
 import { AuthContext } from '@ctb/auth-context';
-
+import styled from 'styled-components';
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
     return;
@@ -30,7 +30,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 /* eslint-disable-next-line */
-export interface AutoCompleteInputProps {}
+export interface AutoCompleteInputProps {
+  isHeader: boolean;
+}
 interface PlaceType {
   description: string;
   structured_formatting: {
@@ -119,9 +121,9 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
   }, [value, inputValue, fetch]);
 
   return (
-    <Autocomplete
+    <StyledAutoComplete
+      isHeader={props.isHeader}
       id="google-map-demo"
-      style={{ width: 230, margin: 10 }}
       getOptionLabel={(option) =>
         typeof option === 'string' ? option : option.description
       }
@@ -182,5 +184,7 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
     />
   );
 }
-
+const StyledAutoComplete = styled(Autocomplete)`
+  margin: ${(props) => (props.isHeader ? '0 0 0 10px' : '10px 0 0 0')};
+`;
 export default AutoCompleteInput;
