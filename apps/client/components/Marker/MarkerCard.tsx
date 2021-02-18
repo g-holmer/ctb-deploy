@@ -25,7 +25,7 @@ const MarkerCard = (props: Props) => {
         <Typography color="secondary">Closed</Typography>
       </ListItemDetails>
       {props.distance && <Box>{props.distance} meters away</Box>}
-      <Image src={'/angle-right.svg'} height="20" width="20" />
+      <Image src={'/static/angle-right.svg'} height="20" width="20" />
     </Card>
   );
 };
