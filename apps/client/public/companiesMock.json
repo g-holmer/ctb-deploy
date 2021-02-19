@@ -21,7 +21,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/static/img/marquee/tim hortons.png",
+    "image": "/static/img/marquee/dunkin.png",
     "openingHours": {
       "hours": "9-21"
     },
@@ -85,7 +85,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/static/img/marquee/tim hortons.png",
+    "image": "/static/img/marquee/dunkin.png",
     "openingHours": {
       "hours": "9-21"
     },
