@@ -19,12 +19,14 @@ export const SearchBoxComponent = (props: Props) => {
   const { register, handleSubmit, watch, errors } = useForm({});
 
   const { navigatorPosition, triggerNavigator }: any = useContext(AuthContext);
+  const [inputValue, setInputValue] = React.useState('');
   const isDesktop = useMediaQuery('(min-width:768px)');
   const onSubmit = (data) => {
-    router.push({
-      pathname: '/search/[pid]',
-      query: { pid: data.cafe },
-    });
+    if (inputValue) {
+      router.push(`/search/[...slug]`, `/search/${inputValue}/location`);
+    } else {
+      router.push(`/search/[...slug]`, `/search/${data.cafe}/cafe`);
+    }
   };
 
   const renderSearchBox = (
@@ -41,7 +43,11 @@ export const SearchBoxComponent = (props: Props) => {
               inputRef={register()}
             />
 
-            <AutoCompleteInput isHeader={props.isHeader} />
+            <AutoCompleteInput
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+              isHeader={props.isHeader}
+            />
           </TextFieldWrapper>
           {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
 

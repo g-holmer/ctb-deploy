@@ -9,6 +9,8 @@ import parse from 'autosuggest-highlight/parse';
 import throttle from 'lodash/throttle';
 import { AuthContext } from '@ctb/auth-context';
 import styled from 'styled-components';
+import Paper from '@material-ui/core/Paper';
+
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
     return;
@@ -32,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
 /* eslint-disable-next-line */
 export interface AutoCompleteInputProps {
   isHeader: boolean;
+  inputValue: any;
+  setInputValue: any;
 }
 interface PlaceType {
   description: string;
@@ -50,8 +54,10 @@ interface PlaceType {
 export function AutoCompleteInput(props: AutoCompleteInputProps) {
   const { navigatorPosition, triggerNavigator }: any = useContext(AuthContext);
   const classes = useStyles();
+  const inputValue = props.inputValue;
+  const setInputValue = props.setInputValue;
   const [value, setValue] = React.useState<PlaceType | null>(null);
-  const [inputValue, setInputValue] = React.useState('');
+
   const [options, setOptions] = React.useState<PlaceType[]>([]);
   const loaded = React.useRef(false);
 
@@ -67,6 +73,61 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
     loaded.current = true;
   }
 
+  const Link = ({ children, ...other }) => {
+    const handleClick = () => {
+      setValue({
+        description: 'My Location',
+        matched_substrings: [
+          {
+            length: 1,
+            offset: 0,
+          },
+        ],
+        place_id: 'ChIJYxUdQVlO4DsRQrA4CSlYRf4',
+        reference: 'ChIJYxUdQVlO4DsRQrA4CSlYRf4',
+        structured_formatting: {
+          main_text: 'Surat',
+          main_text_matched_substrings: [
+            {
+              length: 1,
+              offset: 0,
+            },
+          ],
+          secondary_text: 'Gujarat, India',
+        },
+        terms: [
+          {
+            offset: 0,
+            value: 'Surat',
+          },
+          {
+            offset: 7,
+            value: 'Gujarat',
+          },
+          {
+            offset: 16,
+            value: 'India',
+          },
+        ],
+        types: ['locality', 'political', 'geocode'],
+      });
+      if (!navigatorPosition) {
+        triggerNavigator();
+      }
+    };
+
+    return (
+      <Paper {...other}>
+        <p
+          onMouseDown={handleClick}
+          style={{ marginLeft: 14, cursor: 'pointer' }}
+        >
+          My Location
+        </p>
+        {children}
+      </Paper>
+    );
+  };
   const fetch = React.useMemo(
     () =>
       throttle(
@@ -128,6 +189,7 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
         typeof option === 'string' ? option : option.description
       }
       filterOptions={(x) => x}
+      noOptionsText={''}
       options={options}
       autoComplete
       includeInputInList
@@ -144,11 +206,11 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
         <TextField
           {...params}
           label="Enter city, location or area"
-          onFocus={() => !navigatorPosition && triggerNavigator()}
           variant="outlined"
           fullWidth
         />
       )}
+      PaperComponent={Link}
       renderOption={(option) => {
         const matches =
           option.structured_formatting.main_text_matched_substrings;

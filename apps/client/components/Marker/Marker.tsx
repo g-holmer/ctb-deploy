@@ -45,8 +45,6 @@ const Marker = (props: Props) => {
               adress={props.adress}
               image={props.image}
               openingHours={props.openingHours}
-              //   distance={navigatorPosition && getDistance(item)} !! DON'T FORGET TO UNCOMMENT THIS LATER!!
-              distance={500} //temporarily
             />
           </CSSTransition>
         )}

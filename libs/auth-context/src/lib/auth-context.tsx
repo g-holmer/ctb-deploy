@@ -79,7 +79,7 @@ export const AuthContextProvider = (props: Props) => {
           );
 
           const { lat, lng } =
-            response && response.results[0].geometry.location; // DON'T FORGET TO UNCOMMENT OUT THIS LATER
+            response && response.results[0].geometry.location;
 
           const options = {
             id: item.id,
@@ -106,7 +106,6 @@ export const AuthContextProvider = (props: Props) => {
     return unsubscribe;
   }, []);
 
-  console.log(companiesMockData);
   return (
     <AuthContext.Provider
       value={{

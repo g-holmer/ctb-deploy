@@ -19,24 +19,55 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { SearchBoxComponent } from '@ctb/search-box-component';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Marker from 'apps/client/components/Marker/Marker';
-
+import Geocode from 'react-geocode';
 // import 'google-map-react/dist/index.css'
 
 const SearchPid = () => {
-  const isDesktop = useMediaQuery('(min-width:768px)');
-
-  const [filter, setFilter] = React.useState<string>('');
-  const [sortBy, setSortBy] = React.useState<string>('distance');
-
   const {
     navigatorPosition,
     triggerNavigator,
     companiesMockData,
   }: any = useContext(AuthContext);
   const router = useRouter();
+  const isDesktop = useMediaQuery('(min-width:768px)');
+  const [filter, setFilter] = React.useState<string>('');
+  const [sortBy, setSortBy] = React.useState<string>('distance');
+  const pid: any = router.query.slug && router.query.slug[0];
+  const type: any = router.query.slug && router.query.slug[1];
+  const [latitude, setLat] = useState(0);
+  const [longitude, setLng] = useState(0);
+  const [zoom, setZoom] = useState(0);
+
   useEffect(() => {
-    triggerNavigator();
-  }, []);
+    getLatLng();
+  }, [pid, type]);
+  const getLatLng = async () => {
+    let lat = 0;
+    let lng = 0;
+    let zoom = 0;
+
+    if (pid && pid.length > 0 && type === 'location' && navigatorPosition) {
+      if (pid === 'My Location') {
+        lat = navigatorPosition.lat;
+        lng = navigatorPosition.lng;
+        zoom = 12;
+        console.log('here [1]');
+      }
+    } else {
+      console.log('here [2]');
+      const response = await Geocode.fromAddress(`Sweden`);
+
+      const { latitude, longitude } =
+        response && response.results[0].geometry.location;
+
+      lat = latitude;
+      lng = longitude;
+      zoom = 5;
+    }
+    setLat(lat);
+    setLng(lng);
+    setZoom(zoom);
+  };
 
   const getDistance = (item) => {
     return geolib.getDistance(
@@ -50,19 +81,21 @@ const SearchPid = () => {
       }
     );
   };
-
-  const filteredData =
-    companiesMockData &&
-    companiesMockData.filter((item) => {
-      const pid: any = router.query.pid;
-      return item.companyName.toLowerCase().includes(pid.toLowerCase());
-    });
+  let filteredData = null;
+  if (pid === 'My Location') {
+    filteredData = companiesMockData && companiesMockData;
+  } else {
+    filteredData =
+      companiesMockData &&
+      companiesMockData.filter((item) => {
+        return item.companyName.toLowerCase().includes(pid.toLowerCase());
+      });
+  }
   if (sortBy && sortBy) {
     navigatorPosition &&
       filteredData.sort(function (a, b) {
-        if (sortBy === 'distance') {
-          //   return getDistance(a) - getDistance(b); !! DON'T FORGET TO UNCOMMENT THIS LATER!!
-          return a - b; //temporarily
+        if (sortBy === 'distance' || pid === 'My Location') {
+          return getDistance(a) - getDistance(b);
         } else if (sortBy === 'az' || sortBy === 'za') {
           let nameA;
           let nameB;
@@ -145,8 +178,7 @@ const SearchPid = () => {
                       image={item.image}
                       openingHours={item.openingHours}
                       adress={item.adress}
-                      //   distance={navigatorPosition && getDistance(item)} !! DON'T FORGET TO UNCOMMENT THIS LATER!!
-                      distance={500} //temporarily
+                      distance={navigatorPosition && getDistance(item)}
                       key={item.id}
                     />
                   </CSSTransition>
@@ -154,18 +186,17 @@ const SearchPid = () => {
               })}
           </StyledTransitionGroup>
         </SearchList>
-        <Wrapper>
-          {navigatorPosition && (
+        {zoom > 0 && (
+          <Wrapper>
             <GoogleMapReact
               bootstrapURLKeys={{
                 key: process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY,
               }}
               defaultZoom={13}
-              defaultCenter={[navigatorPosition.lat, navigatorPosition.lng]}
+              zoom={zoom}
+              center={[latitude, longitude]}
             >
               {filteredData.map((place) => {
-                console.log(place);
-
                 return (
                   <Marker
                     key={place.id}
@@ -174,16 +205,15 @@ const SearchPid = () => {
                     adress={place.adress}
                     image={place.image}
                     openingHours={place.openingHours}
-                    //   distance={navigatorPosition && getDistance(item)} !! DON'T FORGET TO UNCOMMENT THIS LATER!!
-                    distance={500} //temporarily
+                    distance={navigatorPosition && getDistance(place)}
                     lat={place.coordinates.lat}
                     lng={place.coordinates.lng}
                   />
                 );
               })}
             </GoogleMapReact>
-          )}
-        </Wrapper>
+          </Wrapper>
+        )}
       </Search>
     </ThemeProvider>
   );
