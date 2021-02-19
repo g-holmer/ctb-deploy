@@ -44,6 +44,7 @@ const Marker = (props: Props) => {
               phoneNumber={props.phoneNumber}
               adress={props.adress}
               image={props.image}
+              distance={props.distance}
               openingHours={props.openingHours}
             />
           </CSSTransition>

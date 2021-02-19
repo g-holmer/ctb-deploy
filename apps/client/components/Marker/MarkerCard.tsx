@@ -44,6 +44,7 @@ const ListItemDetails = styled(Box)`
 `;
 const Card = styled(Box)`
   cursor: pointer;
+  z-index: 11;
   position: absolute;
   display: flex;
   justify-content: space-between;
