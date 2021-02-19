@@ -42,30 +42,62 @@ const SearchPid = () => {
     getLatLng();
   }, [pid, type]);
   const getLatLng = async () => {
-    let lat = 0;
-    let lng = 0;
+    let latitude = 0;
+    let longitude = 0;
     let zoom = 0;
 
     if (pid && pid.length > 0 && type === 'location' && navigatorPosition) {
+      console.log('here [0]');
       if (pid === 'My Location') {
-        lat = navigatorPosition.lat;
-        lng = navigatorPosition.lng;
+        latitude = navigatorPosition.lat;
+        longitude = navigatorPosition.lng;
         zoom = 12;
         console.log('here [1]');
+      } else {
+        console.log(pid);
+
+        const response = await Geocode.fromAddress(`${pid}`);
+        console.log('here [2]');
+        const { lat, lng } = response && response.results[0].geometry.location; // DON'T FORGET TO UNCOMMENT OUT THIS LATER
+        latitude = lat;
+        longitude = lng;
+        zoom = 12;
       }
     } else {
-      console.log('here [2]');
-      const response = await Geocode.fromAddress(`Sweden`);
+      console.log('here [0.0]');
+      if (pid === 'My Location') {
+        console.log('here [3]');
+        const response = await Geocode.fromAddress(`Sweden`);
 
-      const { latitude, longitude } =
-        response && response.results[0].geometry.location;
+        const { lat, lng } = response && response.results[0].geometry.location;
 
-      lat = latitude;
-      lng = longitude;
-      zoom = 5;
+        latitude = lat;
+        longitude = lng;
+        zoom = 5;
+      } else {
+        if (type === 'cafe') {
+          console.log('here [5]');
+          const response = await Geocode.fromAddress(`Sweden`);
+
+          const { lat, lng } =
+            response && response.results[0].geometry.location;
+
+          latitude = lat;
+          longitude = lng;
+          zoom = 5;
+        } else {
+          const response = await Geocode.fromAddress(`${pid}`);
+          console.log('here [4]');
+          const { lat, lng } =
+            response && response.results[0].geometry.location; // DON'T FORGET TO UNCOMMENT OUT THIS LATER
+          latitude = lat;
+          longitude = lng;
+          zoom = 12;
+        }
+      }
     }
-    setLat(lat);
-    setLng(lng);
+    setLat(latitude);
+    setLng(longitude);
     setZoom(zoom);
   };
 
@@ -82,7 +114,7 @@ const SearchPid = () => {
     );
   };
   let filteredData = null;
-  if (pid === 'My Location') {
+  if (type === 'location') {
     filteredData = companiesMockData && companiesMockData;
   } else {
     filteredData =
@@ -94,7 +126,7 @@ const SearchPid = () => {
   if (sortBy && sortBy) {
     navigatorPosition &&
       filteredData.sort(function (a, b) {
-        if (sortBy === 'distance' || pid === 'My Location') {
+        if (sortBy === 'distance') {
           return getDistance(a) - getDistance(b);
         } else if (sortBy === 'az' || sortBy === 'za') {
           let nameA;
