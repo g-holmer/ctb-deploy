@@ -47,47 +47,34 @@ const SearchPid = () => {
     let zoom = 0;
 
     if (pid && pid.length > 0 && type === 'location' && navigatorPosition) {
-      console.log('here [0]');
       if (pid === 'My Location') {
         latitude = navigatorPosition.lat;
         longitude = navigatorPosition.lng;
         zoom = 12;
-        console.log('here [1]');
       } else {
-        console.log(pid);
-
         const response = await Geocode.fromAddress(`${pid}`);
-        console.log('here [2]');
-        const { lat, lng } = response && response.results[0].geometry.location; 
+        const { lat, lng } = response && response.results[0].geometry.location;
         latitude = lat;
         longitude = lng;
         zoom = 12;
       }
     } else {
-      console.log('here [0.0]');
       if (pid === 'My Location') {
-        console.log('here [3]');
         const response = await Geocode.fromAddress(`Sweden`);
-
         const { lat, lng } = response && response.results[0].geometry.location;
-
         latitude = lat;
         longitude = lng;
         zoom = 12;
       } else {
         if (type === 'cafe') {
-          console.log('here [5]');
           const response = await Geocode.fromAddress(`Sweden`);
-
           const { lat, lng } =
             response && response.results[0].geometry.location;
-
           latitude = lat;
           longitude = lng;
           zoom = 5;
         } else {
           const response = await Geocode.fromAddress(`${pid}`);
-          console.log('here [4]');
           const { lat, lng } =
             response && response.results[0].geometry.location; // DON'T FORGET TO UNCOMMENT OUT THIS LATER
           latitude = lat;

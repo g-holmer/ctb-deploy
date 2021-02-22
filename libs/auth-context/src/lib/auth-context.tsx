@@ -39,9 +39,7 @@ export const AuthContextProvider = (props: Props) => {
         console.log(error.message);
       });
   };
-  function showPosition(position) {
-    console.log(position);
-  }
+
   const triggerNavigator = () => {
     function success(pos) {
       const crd = pos.coords;
