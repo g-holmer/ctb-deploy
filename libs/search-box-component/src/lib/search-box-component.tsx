@@ -59,7 +59,6 @@ export const SearchBoxComponent = (props: Props) => {
       elevation={3}
       issearch={isSearch}
       className={classes.root}
-      variant={isHeader ? '' : 'outlined'}
     >
       <>
         <Form isheader={isHeader} onSubmit={handleSubmit(onSubmit)}>
