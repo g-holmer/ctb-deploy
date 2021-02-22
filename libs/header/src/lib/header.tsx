@@ -20,9 +20,7 @@ export function Header(props: HeaderProps) {
     }
     return isEqual;
   };
-  React.useEffect(() => {
-    renderAnchorContent('Login');
-  }, [router.pathname]);
+
   const renderAnchorContent = (string) => {
     let renderAnchorContent = null;
 
