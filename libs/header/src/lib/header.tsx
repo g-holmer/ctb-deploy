@@ -3,10 +3,13 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { SearchBoxComponent } from '@ctb/search-box-component';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 /* eslint-disable-next-line */
 export interface HeaderProps {}
 
 export function Header(props: HeaderProps) {
+  const isDesktop = useMediaQuery('(min-width:768px)');
   const router = useRouter();
   const isActive = (string) => {
     let isEqual: string = '';
@@ -17,7 +20,30 @@ export function Header(props: HeaderProps) {
     }
     return isEqual;
   };
+  React.useEffect(() => {
+    renderAnchorContent('Login');
+  }, [router.pathname]);
+  const renderAnchorContent = (string) => {
+    let renderAnchorContent = null;
 
+    let imageSrc = '';
+
+    if (!isDesktop) {
+      if (string === 'Home') {
+        isActive('/') === 'true'
+          ? (imageSrc = '/static/links/Home-active.svg')
+          : (imageSrc = '/static/links/Home.svg');
+      } else if (string === 'Login') {
+        isActive('/signIn') === 'true'
+          ? (imageSrc = '/static/links/User-active.svg')
+          : (imageSrc = '/static/links/User.svg');
+      }
+      renderAnchorContent = <Image image={imageSrc} />;
+    } else {
+      renderAnchorContent = string;
+    }
+    return renderAnchorContent;
+  };
   return (
     <StyledHeader>
       <HeaderUpper>
@@ -28,17 +54,25 @@ export function Header(props: HeaderProps) {
           <ul>
             <li>
               <Link href="/">
-                <Anchor active={isActive('/')}>Home</Anchor>
+                <Anchor active={isActive('/')}>
+                  {renderAnchorContent('Home')}
+                </Anchor>
               </Link>
             </li>
-            <li>
-              <Link href="/connectCafe">
-                <Anchor active={isActive('/connectCafe')}>Connect Café</Anchor>
-              </Link>
-            </li>
+            {isDesktop && (
+              <li>
+                <Link href="/connectCafe">
+                  <Anchor active={isActive('/connectCafe')}>
+                    {renderAnchorContent('Connect Cafe')}
+                  </Anchor>
+                </Link>
+              </li>
+            )}
             <li>
               <Link href="/signIn">
-                <Anchor active={isActive('/signIn')}>Login</Anchor>
+                <Anchor active={isActive('/signIn')}>
+                  {renderAnchorContent('Login')}
+                </Anchor>
               </Link>
             </li>
           </ul>
@@ -49,6 +83,14 @@ export function Header(props: HeaderProps) {
     </StyledHeader>
   );
 }
+const Image = styled.div`
+  clip-path: circle(50%);
+  padding: 6px;
+  background: ${(props) => `url(${props.image}) no-repeat center`};
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+`;
 const StyledHeader = styled.header`
   z-index: 100;
   position: fixed;
