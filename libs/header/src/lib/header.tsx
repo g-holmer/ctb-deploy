@@ -1,12 +1,23 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-
+import { useRouter } from 'next/router';
 import { SearchBoxComponent } from '@ctb/search-box-component';
 /* eslint-disable-next-line */
 export interface HeaderProps {}
 
 export function Header(props: HeaderProps) {
+  const router = useRouter();
+  const isActive = (string) => {
+    let isEqual: string = '';
+    if (router.pathname === string) {
+      isEqual = 'true';
+    } else {
+      isEqual = 'false';
+    }
+    return isEqual;
+  };
+
   return (
     <StyledHeader>
       <HeaderUpper>
@@ -17,17 +28,17 @@ export function Header(props: HeaderProps) {
           <ul>
             <li>
               <Link href="/">
-                <a>Home</a>
+                <Anchor active={isActive('/')}>Home</Anchor>
               </Link>
             </li>
             <li>
-              <Link href="">
-                <a>Connect Café</a>
+              <Link href="/connectCafe">
+                <Anchor active={isActive('/connectCafe')}>Connect Café</Anchor>
               </Link>
             </li>
             <li>
               <Link href="/signIn">
-                <a>Login</a>
+                <Anchor active={isActive('/signIn')}>Login</Anchor>
               </Link>
             </li>
           </ul>
@@ -61,13 +72,14 @@ const StyledHeader = styled.header`
       li {
         margin-left: 4vw;
         list-style: none;
-        a {
-          color: #f5f5f5;
-          text-decoration: none;
-        }
       }
     }
   }
+`;
+const Anchor = styled.a`
+  color: ${(props) => (props.active === 'true' ? '#A3894C' : '#f5f5f5')};
+  text-decoration: none;
+  cursor: pointer;
 `;
 const Logotype = styled.div`
   margin: 10px 0 0 4vw;
