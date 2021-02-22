@@ -2,23 +2,55 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import { SearchBoxComponent } from '@ctb/search-box-component';
 /* eslint-disable-next-line */
 export interface HeaderProps {}
 
+export function Header(props: HeaderProps) {
+  return (
+    <StyledHeader>
+      <HeaderUpper>
+        <Logotype>
+          <p>Logotype</p>
+        </Logotype>
+        <nav>
+          <ul>
+            <li>
+              <Link href="/">
+                <a>Home</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="">
+                <a>Connect Café</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/signIn">
+                <a>Login</a>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </HeaderUpper>
+
+      <SearchBoxComponent isHeader={true} />
+    </StyledHeader>
+  );
+}
 const StyledHeader = styled.header`
   z-index: 100;
   position: fixed;
+  top: 0;
   width: 100%;
   background: #111;
   color: #f5f5f5;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.6);
   justify-content: space-between;
   border-bottom: 1px solid #5c5c5c;
 
-  div {
-    margin: 10px 0 10px 4vw;
-  }
   nav {
     margin-right: 4vw;
     ul {
@@ -37,34 +69,12 @@ const StyledHeader = styled.header`
     }
   }
 `;
-
-export function Header(props: HeaderProps) {
-  return (
-    <StyledHeader>
-      <div>
-        <p>Logotype</p>
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="">
-              <a>Connect Café</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/signIn">
-              <a>Login</a>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </StyledHeader>
-  );
-}
-
+const Logotype = styled.div`
+  margin: 10px 0 0 4vw;
+`;
+const HeaderUpper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 export default Header;

@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 /* eslint-disable-next-line */
 
-export const theme = createMuiTheme({
+export const darkTheme = createMuiTheme({
   palette: {
     primary: {
       main: '#4CADC0',
@@ -9,4 +9,4 @@ export const theme = createMuiTheme({
     type: 'dark',
   },
 });
-export default theme;
+export default darkTheme;
