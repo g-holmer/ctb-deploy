@@ -54,11 +54,7 @@ export const SearchBoxComponent = (props: Props) => {
             />
           </TextFieldWrapper>
           {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
-          <p>
-            {navigatorPosition
-              ? navigatorPosition.lat + navigatorPosition.lng
-              : 'no positon'}
-          </p>
+
           <Button
             style={{
               margin: '10px',
