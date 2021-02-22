@@ -95,6 +95,7 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
     return (
       <Paper {...other}>
         <MyLocationWrapper
+          isheader={props.isHeader}
           onTouchStart={handleClick}
           onMouseDown={handleClick}
           onClick={handleClick}
@@ -246,7 +247,8 @@ const MyLocationWrapper = styled.div`
   display: flex;
 
   &:hover {
-    background: #555555;
+    background: ${(props) =>
+      props.isheader === 'true' ? '#555555' : '#e4e4e4'};
   }
 `;
 export default AutoCompleteInput;

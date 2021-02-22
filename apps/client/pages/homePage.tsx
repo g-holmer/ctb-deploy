@@ -5,7 +5,7 @@ import { Typography, Box } from '@material-ui/core';
 import Marquee, { Motion } from 'react-marquee-slider';
 import Image from 'next/image';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { theme } from '@ctb/dark-theme-provider';
+import { darkTheme } from '@ctb/dark-theme-provider';
 
 import { SearchBoxComponent } from '@ctb/search-box-component';
 import { AuthContext } from '@ctb/auth-context';
@@ -15,7 +15,7 @@ interface Props {}
 const homePage = (props: Props) => {
   const { companiesMockData }: any = useContext(AuthContext);
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkTheme}>
       <Home>
         <Hero>
           <OnboardingMessage>
