@@ -10,7 +10,7 @@ import throttle from 'lodash/throttle';
 import { AuthContext } from '@ctb/auth-context';
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
-
+import Image from 'next/image';
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
     return;
@@ -94,14 +94,20 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
 
     return (
       <Paper {...other}>
-        <p
+        <MyLocationWrapper
           onTouchStart={handleClick}
           onMouseDown={handleClick}
           onClick={handleClick}
-          style={{ marginLeft: 14, cursor: 'pointer' }}
         >
-          My Location
-        </p>
+          <ImageWrapper>
+            <Image
+              src="/static/arrow-nav.svg"
+              layout="fill"
+              objectfit="contain"
+            />
+          </ImageWrapper>
+          <p>My Location</p>
+        </MyLocationWrapper>
         {children}
       </Paper>
     );
@@ -227,5 +233,20 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
 const StyledAutoComplete = styled(Autocomplete)`
   margin: ${(props) =>
     props.isheader === 'true' ? '0 0 0 10px' : '10px 0 0 0'};
+`;
+const ImageWrapper = styled.div`
+  margin: 14px;
+  position: relative;
+  align-self: center;
+  height: 27px;
+  width: 27px;
+`;
+const MyLocationWrapper = styled.div`
+  cursor: pointer;
+  display: flex;
+
+  &:hover {
+    background: #555555;
+  }
 `;
 export default AutoCompleteInput;
