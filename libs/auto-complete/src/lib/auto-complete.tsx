@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 /* eslint-disable-next-line */
 export interface AutoCompleteInputProps {
-  isHeader: boolean;
+  isHeader: string;
   inputValue: any;
   setInputValue: any;
 }
@@ -77,14 +77,6 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
     const handleClick = () => {
       setValue({
         description: 'My Location',
-        matched_substrings: [
-          {
-            length: 1,
-            offset: 0,
-          },
-        ],
-        place_id: 'ChIJYxUdQVlO4DsRQrA4CSlYRf4',
-        reference: 'ChIJYxUdQVlO4DsRQrA4CSlYRf4',
         structured_formatting: {
           main_text: 'Surat',
           main_text_matched_substrings: [
@@ -95,31 +87,17 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
           ],
           secondary_text: 'Gujarat, India',
         },
-        terms: [
-          {
-            offset: 0,
-            value: 'Surat',
-          },
-          {
-            offset: 7,
-            value: 'Gujarat',
-          },
-          {
-            offset: 16,
-            value: 'India',
-          },
-        ],
-        types: ['locality', 'political', 'geocode'],
       });
-      if (!navigatorPosition) {
-        triggerNavigator();
-      }
+
+      triggerNavigator();
     };
 
     return (
       <Paper {...other}>
         <p
+          onTouchStart={handleClick}
           onMouseDown={handleClick}
+          onClick={handleClick}
           style={{ marginLeft: 14, cursor: 'pointer' }}
         >
           My Location
@@ -183,7 +161,7 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
 
   return (
     <StyledAutoComplete
-      isHeader={props.isHeader}
+      isheader={props.isHeader}
       id="google-map-demo"
       getOptionLabel={(option) =>
         typeof option === 'string' ? option : option.description
@@ -247,6 +225,7 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
   );
 }
 const StyledAutoComplete = styled(Autocomplete)`
-  margin: ${(props) => (props.isHeader ? '0 0 0 10px' : '10px 0 0 0')};
+  margin: ${(props) =>
+    props.isheader === 'true' ? '0 0 0 10px' : '10px 0 0 0'};
 `;
 export default AutoCompleteInput;

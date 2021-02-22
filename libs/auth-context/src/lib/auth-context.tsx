@@ -39,6 +39,9 @@ export const AuthContextProvider = (props: Props) => {
         console.log(error.message);
       });
   };
+  function showPosition(position) {
+    console.log(position);
+  }
   const triggerNavigator = () => {
     function success(pos) {
       const crd = pos.coords;
@@ -62,8 +65,10 @@ export const AuthContextProvider = (props: Props) => {
       timeout: 5000,
       maximumAge: 0,
     };
-    if (!navigatorPosition)
+
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error, options);
+    }
   };
   const router = useRouter();
   useEffect(() => {

@@ -15,7 +15,10 @@ export interface Props {
 export const SearchBoxComponent = (props: Props) => {
   const router = useRouter();
 
-  const isSearch = router.pathname.includes('/search');
+  const isSearch: string = router.pathname.includes('/search')
+    ? 'true'
+    : 'false';
+
   const { register, handleSubmit, watch, errors } = useForm({});
 
   const { navigatorPosition, triggerNavigator }: any = useContext(AuthContext);
@@ -28,12 +31,13 @@ export const SearchBoxComponent = (props: Props) => {
       router.push(`/search/[...slug]`, `/search/${data.cafe}/cafe`);
     }
   };
+  const isHeader: string = props.isHeader ? 'true' : 'false';
 
   const renderSearchBox = (
-    <SearchBox isHeader={props.isHeader} isSearch={isSearch}>
+    <SearchBox isheader={isHeader} issearch={isSearch}>
       <>
-        <Form isHeader={props.isHeader} onSubmit={handleSubmit(onSubmit)}>
-          <TextFieldWrapper isHeader={props.isHeader}>
+        <Form isheader={isHeader} onSubmit={handleSubmit(onSubmit)}>
+          <TextFieldWrapper isheader={isHeader}>
             <TextField
               id="outlined-basic"
               label="Enter café"
@@ -46,11 +50,15 @@ export const SearchBoxComponent = (props: Props) => {
             <AutoCompleteInput
               inputValue={inputValue}
               setInputValue={setInputValue}
-              isHeader={props.isHeader}
+              isHeader={isHeader}
             />
           </TextFieldWrapper>
           {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
-
+          <p>
+            {navigatorPosition
+              ? navigatorPosition.lat + navigatorPosition.lng
+              : 'no positon'}
+          </p>
           <Button
             style={{
               margin: '10px',
@@ -70,7 +78,7 @@ export const SearchBoxComponent = (props: Props) => {
   );
   return (
     <ThemeProvider theme={theme}>
-      {isSearch && isDesktop
+      {isSearch === 'true' && isDesktop
         ? renderSearchBox
         : !props.isHeader && renderSearchBox}
     </ThemeProvider>
@@ -82,18 +90,18 @@ export const SearchBox = styled(Box)`
 
   flex-direction: column;
   min-width: 300px;
-  background: ${(props) => (props.isSearch ? '#111' : '#333333')};
+  background: ${(props) => (props.issearch === 'true' ? '#111' : '#333333')};
 
   color: white;
-  padding: ${(props) => (props.isHeader ? '0' : '20px')};
-  margin-bottom: ${(props) => (props.isHeader ? '10px' : '0')};
-  border-radius: ${(props) => (props.isSearch ? '0' : '30px')};
+  padding: ${(props) => (props.isheader === 'true' ? '0' : '20px')};
+  margin-bottom: ${(props) => (props.isheader === 'true' ? '10px' : '0')};
+  border-radius: ${(props) => (props.issearch === 'true' ? '0' : '30px')};
 `;
 export const TextFieldWrapper = styled.div`
-  margin-left: ${(props) => (props.isHeader ? '10px' : '0')};
+  margin-left: ${(props) => (props.isheader === 'true' ? '10px' : '0')};
   display: flex;
 
-  flex-direction: ${(props) => (props.isHeader ? 'row' : 'column')};
+  flex-direction: ${(props) => (props.isheader === 'true' ? 'row' : 'column')};
 
   input {
     width: 90% !important;
@@ -109,7 +117,8 @@ export const Form = styled.form`
   flex-direction: column;
 
   @media (min-width: 768px) {
-    flex-direction: ${(props) => (props.isHeader ? 'row' : 'column')};
+    flex-direction: ${(props) =>
+      props.isheader === 'true' ? 'row' : 'column'};
     max-width: 740px;
     justify-content: flex-start;
   }

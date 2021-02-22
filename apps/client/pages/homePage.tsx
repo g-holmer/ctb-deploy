@@ -37,13 +37,13 @@ const homePage = (props: Props) => {
             <Image
               src="/static/img/queue.jpg"
               alt="Picture of the author"
-              width={500}
-              height={350}
+              width={640}
+              height={380}
             />
           </ImgWrapper>
         </OnboardingContent>
 
-        <Marquee velocity={120} resetAfterTries={50}>
+        <Marquee velocity={20} resetAfterTries={50}>
           {companiesMockData &&
             companiesMockData.map((item) => (
               <Motion key={`child-${item.id}`} velocity={0} radius={100}>

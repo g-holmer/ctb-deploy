@@ -58,7 +58,7 @@ const SearchPid = () => {
 
         const response = await Geocode.fromAddress(`${pid}`);
         console.log('here [2]');
-        const { lat, lng } = response && response.results[0].geometry.location; // DON'T FORGET TO UNCOMMENT OUT THIS LATER
+        const { lat, lng } = response && response.results[0].geometry.location; 
         latitude = lat;
         longitude = lng;
         zoom = 12;
@@ -73,7 +73,7 @@ const SearchPid = () => {
 
         latitude = lat;
         longitude = lng;
-        zoom = 5;
+        zoom = 12;
       } else {
         if (type === 'cafe') {
           console.log('here [5]');
