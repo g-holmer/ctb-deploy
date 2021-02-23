@@ -76,7 +76,7 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
   const Link = ({ children, ...other }) => {
     const handleClick = () => {
       setValue({
-        description: 'My Location',
+        description: 'Check my position',
         structured_formatting: {
           main_text: 'Surat',
           main_text_matched_substrings: [
@@ -107,7 +107,7 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
               objectfit="contain"
             />
           </ImageWrapper>
-          <p>My Location</p>
+          <p>Check my position</p>
         </MyLocationWrapper>
         {children}
       </Paper>

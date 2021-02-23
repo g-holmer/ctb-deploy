@@ -47,7 +47,7 @@ const SearchPid = () => {
     let zoom = 0;
 
     if (pid && pid.length > 0 && type === 'location' && navigatorPosition) {
-      if (pid === 'My Location') {
+      if (pid === 'Check my position') {
         latitude = navigatorPosition.lat;
         longitude = navigatorPosition.lng;
         zoom = 12;
@@ -59,7 +59,7 @@ const SearchPid = () => {
         zoom = 12;
       }
     } else {
-      if (pid === 'My Location') {
+      if (pid === 'Check my position') {
         const response = await Geocode.fromAddress(`Sweden`);
         const { lat, lng } = response && response.results[0].geometry.location;
         latitude = lat;
