@@ -99,7 +99,9 @@ export const SearchBoxComponent = (props: Props) => {
     </SearchBox>
   );
   return (
-    <ThemeProvider theme={props.isHeader ? darkTheme : theme}>
+    <ThemeProvider
+      theme={props.isHeader || isSearch === 'true' ? darkTheme : theme}
+    >
       {isSearch === 'true' && isDesktop
         ? renderSearchBox
         : !props.isHeader && renderSearchBox}
