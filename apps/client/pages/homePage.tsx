@@ -91,21 +91,23 @@ const Home = styled(Box)`
 `;
 
 const OnboardingText = styled(Box)`
-  max-width: 400px;
   margin: 0 30px 30px 0;
+  max-width: 400px;
 `;
 
 const OnboardingMessage = styled(Box)`
   margin: 30px;
 `;
 const OnboardingContent = styled(Box)`
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   margin: 5vw 5vw 0 5vw;
-  @media (min-width: 1040px) {
+  @media (min-width: 930px) {
     justify-content: space-between;
+    flex-direction: row;
   }
 `;
 const ImageWrapper = styled.div`
