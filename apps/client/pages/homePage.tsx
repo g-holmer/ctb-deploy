@@ -14,6 +14,8 @@ interface Props {}
 
 const homePage = (props: Props) => {
   const { companiesMockData }: any = useContext(AuthContext);
+  console.log(companiesMockData);
+
   return (
     <ThemeProvider theme={darkTheme}>
       <Home>
@@ -43,13 +45,11 @@ const homePage = (props: Props) => {
           </ImgWrapper>
         </OnboardingContent>
 
-        <Marquee velocity={20} resetAfterTries={50}>
+        <Marquee velocity={128} resetAfterTries={50}>
           {companiesMockData &&
             companiesMockData.map((item) => (
               <Motion key={`child-${item.id}`} velocity={0} radius={100}>
-                <ImageWrapper>
-                  <Image src={item.image} layout="fill" objectfit="contain" />
-                </ImageWrapper>
+                <ImageWrapper image={item.image}></ImageWrapper>
               </Motion>
             ))}
         </Marquee>
@@ -109,9 +109,16 @@ const OnboardingContent = styled(Box)`
   }
 `;
 const ImageWrapper = styled.div`
+  background: ${(props) => `url(${props.image}) no-repeat center`};
+  background-size: contain;
+
   position: relative;
-  width: 170px;
+  width: 130px;
   height: 100px;
+  @media (min-width: 768px) {
+    width: 170px;
+    height: 130px;
+  }
 `;
 
 const ImgWrapper = styled.div`

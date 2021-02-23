@@ -73,7 +73,7 @@ export const AuthContextProvider = (props: Props) => {
     router.events.on('routeChangeComplete', () => {
       window.scrollTo(0, 0);
     });
-    fetch('/companiesMock.json')
+    fetch('/companies.json')
       .then((data) => data.json())
       .then((data) => {
         data.map(async (item) => {
