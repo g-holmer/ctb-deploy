@@ -17,9 +17,7 @@ interface Props {
 const SearchListItem = (props: Props) => {
   return (
     <ListItem>
-      <ImageWrapper>
-        <Image src={props.image} layout="fill" objectfit="contain" />
-      </ImageWrapper>
+      <ImageWrapper image={props.image}></ImageWrapper>
       <ListItemDetails>
         <Typography variant="h5">{props.companyName}</Typography>
         <Typography>
@@ -38,7 +36,8 @@ const SearchListItem = (props: Props) => {
   );
 };
 const ImageWrapper = styled.div`
-  clip-path: circle(50%);
+  background: ${(props) => `url(${props.image}) no-repeat center`};
+  background-size: contain;
   position: relative;
   width: 150px;
   height: 150px;

@@ -5,7 +5,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/static/img/marquee/waynescoffee.svg",
+    "image": "/static/img/marquee/espressohouse.png",
     "openingHours": {
       "hours": "9-21"
     },
@@ -21,7 +21,7 @@
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/static/img/marquee/dunkin.png",
+    "image": "/static/img/marquee/dunkin.svg",
     "openingHours": {
       "hours": "9-21"
     },
@@ -49,11 +49,11 @@
   },
   {
     "id": 4,
-    "companyName": "Caribou Coffee",
+    "companyName": "Tim Hortons",
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/static/img/marquee/dunkin.png",
+    "image": "/static/img/marquee/tim-hortons.png",
     "openingHours": {
       "hours": "9-21"
     },
@@ -81,11 +81,11 @@
   },
   {
     "id": 6,
-    "companyName": "Tim Hortons",
+    "companyName": "Luckin Coffee",
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/static/img/marquee/dunkin.png",
+    "image": "/static/img/marquee/luckin-coffee.svg",
     "openingHours": {
       "hours": "9-21"
     },
@@ -97,11 +97,11 @@
   },
   {
     "id": 7,
-    "companyName": "Coffee House",
+    "companyName": "Tom 'N Toms",
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "image": "/static/img/marquee/tom-n-toms.jpg",
     "openingHours": {
       "hours": "9-21"
     },
@@ -113,11 +113,11 @@
   },
   {
     "id": 8,
-    "companyName": "Coffee House 2",
+    "companyName": "Costa Café",
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "image": "/static/img/marquee/costa-coffee.svg",
     "openingHours": {
       "hours": "9-21"
     },
@@ -129,11 +129,11 @@
   },
   {
     "id": 9,
-    "companyName": "Coffee House 3",
+    "companyName": "Tchibo",
     "vatNr": 32323,
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
-    "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "image": "/static/img/marquee/tchibo-coffee.png",
     "openingHours": {
       "hours": "9-21"
     },
