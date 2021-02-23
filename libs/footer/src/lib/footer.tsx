@@ -15,7 +15,7 @@ const StyledFooter = styled.footer`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border-bottom: 1px solid #5c5c5c;
   div {
     margin-left: 4vw;
@@ -44,25 +44,7 @@ const StyledFooter = styled.footer`
 export function Footer(props: FooterProps) {
   return (
     <StyledFooter>
-      <nav>
-        <ul>
-          <li>
-            <Link href="">
-              <a>Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="">
-              <a>Connect Café</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="">
-              <a>Login</a>
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <p style={{ fontSize: '12px' }}>© Café Table Booking 2021</p>
     </StyledFooter>
   );
 }
