@@ -53,7 +53,14 @@ const homePage = (props: Props) => {
             {companiesMockData &&
               companiesMockData.map((item) => (
                 <Motion key={`child-${item.id}`} velocity={0} radius={100}>
-                  <ImageWrapper image={item.image}></ImageWrapper>
+                  <ImageWrapper>
+                    <Image
+                      src={item.image}
+                      alt="Picture of the author"
+                      width={570}
+                      height={370}
+                    />
+                  </ImageWrapper>
                 </Motion>
               ))}
           </Marquee>
@@ -140,14 +147,17 @@ const OnboardingContent = styled(Box)`
   }
 `;
 const ImageWrapper = styled.div`
-  background: ${(props) => `url(${props.image}) no-repeat center`};
   background-size: contain;
   position: relative;
-  width: 130px;
-  height: 100px;
-  @media (min-width: 768px) {
-    width: 170px;
-    height: 130px;
+
+  img {
+    border-radius: 4px;
+    width: 130px;
+    height: 100px;
+    @media (min-width: 768px) {
+      width: 170px;
+      height: 130px;
+    }
   }
 `;
 
