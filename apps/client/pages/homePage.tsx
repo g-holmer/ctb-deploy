@@ -45,7 +45,7 @@ const homePage = (props: Props) => {
           </ImgWrapper>
         </OnboardingContent>
 
-        <Marquee velocity={128} resetAfterTries={50}>
+        <Marquee velocity={30} resetAfterTries={50}>
           {companiesMockData &&
             companiesMockData.map((item) => (
               <Motion key={`child-${item.id}`} velocity={0} radius={100}>
