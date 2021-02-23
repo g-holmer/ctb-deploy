@@ -37,7 +37,7 @@ const homePage = (props: Props) => {
           </OnboardingText>
           <ImgWrapper>
             <Image
-              src="/static/img/queue.jpg"
+              src="/static/img/queue.png"
               alt="Picture of the author"
               width={640}
               height={380}
@@ -93,6 +93,15 @@ const Home = styled(Box)`
 const OnboardingText = styled(Box)`
   margin: 0 30px 30px 0;
   max-width: 400px;
+  @media (min-width: 480px) {
+    max-width: 100%;
+  }
+  @media (min-width: 708px) {
+    max-width: 600px;
+  }
+  @media (min-width: 930px) {
+    max-width: 400px;
+  }
 `;
 
 const OnboardingMessage = styled(Box)`
@@ -106,6 +115,7 @@ const OnboardingContent = styled(Box)`
   flex-direction: column;
   margin: 5vw 5vw 0 5vw;
   @media (min-width: 930px) {
+    margin: 5vw 10vw 0 10vw;
     justify-content: space-between;
     flex-direction: row;
   }
