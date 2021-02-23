@@ -130,5 +130,9 @@ export const AuthContextProvider = (props: Props) => {
   );
 };
 const FontWrapper = styled.div`
-  font-family: Helvetica;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+
+  button {
+    font-weight: bold;
+  }
 `;
