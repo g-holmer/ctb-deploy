@@ -153,5 +153,8 @@ const ImageWrapper = styled.div`
 
 const ImgWrapper = styled.div`
   filter: drop-shadow(0px 7px 10px rgba(0, 0, 0, 0.6));
+  img {
+    border-radius: 4px;
+  }
 `;
 export default homePage;
