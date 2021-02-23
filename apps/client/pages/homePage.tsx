@@ -9,6 +9,7 @@ import { darkTheme } from '@ctb/dark-theme-provider';
 
 import { SearchBoxComponent } from '@ctb/search-box-component';
 import { AuthContext } from '@ctb/auth-context';
+import OnboardingCard from '../components/OnboardingCard';
 
 interface Props {}
 
@@ -26,37 +27,52 @@ const homePage = (props: Props) => {
           <SearchBoxComponent isHeader={false} />
         </Hero>
         <OnboardingContent>
-          <OnboardingText>
-            <Typography variant="h5">Save time and money</Typography>
-            <Typography style={{ fontSize: '12px' }}>
-              Instead of staying in queue to visit your favourite café you can
-              nice and easy book your table and enjoy your coffee served when
-              you arrive at the café. With discount code ILOVECOFFEE get a 50%
-              discount at your first reservation.
-            </Typography>
-          </OnboardingText>
-          <ImgWrapper>
-            <Image
-              src="/static/img/queue.png"
-              alt="Picture of the author"
-              width={640}
-              height={380}
-            />
-          </ImgWrapper>
+          <OnboardingCard />
+          <OnboardingRight>
+            <OnboardingText>
+              <Typography variant="h5">Connect your Café</Typography>
+              <Typography style={{ fontSize: '14px' }}>
+                We help 9 different service entrepreneurs with booking, payment
+                and marketing for their café or restaurant. Try and see how we
+                can help you! Do you rather want to talk to an employee? Call
+                0772-111 111
+              </Typography>
+            </OnboardingText>
+            <ImgWrapper>
+              <Image
+                src="/static/img/restaurantbusinesss.jpg"
+                alt="Picture of the author"
+                width={570}
+                height={370}
+              />
+            </ImgWrapper>
+          </OnboardingRight>
         </OnboardingContent>
-
-        <Marquee velocity={30} resetAfterTries={50}>
-          {companiesMockData &&
-            companiesMockData.map((item) => (
-              <Motion key={`child-${item.id}`} velocity={0} radius={100}>
-                <ImageWrapper image={item.image}></ImageWrapper>
-              </Motion>
-            ))}
-        </Marquee>
+        <div style={{ marginTop: 50 }}>
+          <Marquee velocity={30} resetAfterTries={50}>
+            {companiesMockData &&
+              companiesMockData.map((item) => (
+                <Motion key={`child-${item.id}`} velocity={0} radius={100}>
+                  <ImageWrapper image={item.image}></ImageWrapper>
+                </Motion>
+              ))}
+          </Marquee>
+        </div>
       </Home>
     </ThemeProvider>
   );
 };
+const OnboardingRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  @media (min-width: 930px) {
+    margin-top: 0;
+    margin-left: 100px;
+  }
+`;
 const Hero = styled(Box)`
   color: white;
   display: flex;
@@ -91,16 +107,19 @@ const Home = styled(Box)`
 `;
 
 const OnboardingText = styled(Box)`
-  margin: 0 30px 30px 0;
-  max-width: 400px;
+  background: white;
+  filter: drop-shadow(0px 12px 20px rgba(0, 0, 0, 0.6));
+  border-radius: 4px;
+  border: 1px solid gold;
+  padding: 20px;
+
+  margin: 0 0 50px 0;
+  max-width: 100%;
   @media (min-width: 480px) {
-    max-width: 100%;
+    max-width: 500px;
   }
   @media (min-width: 708px) {
-    max-width: 600px;
-  }
-  @media (min-width: 930px) {
-    max-width: 400px;
+    margin-bottom: 90px;
   }
 `;
 
@@ -115,7 +134,7 @@ const OnboardingContent = styled(Box)`
   flex-direction: column;
   margin: 5vw 5vw 0 5vw;
   @media (min-width: 930px) {
-    margin: 5vw 10vw 0 10vw;
+    margin: 5vw 15vw 0 15vw;
     justify-content: space-between;
     flex-direction: row;
   }
@@ -123,7 +142,6 @@ const OnboardingContent = styled(Box)`
 const ImageWrapper = styled.div`
   background: ${(props) => `url(${props.image}) no-repeat center`};
   background-size: contain;
-
   position: relative;
   width: 130px;
   height: 100px;
