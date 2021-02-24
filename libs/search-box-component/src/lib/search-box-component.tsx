@@ -40,7 +40,6 @@ export const SearchBoxComponent = (props: Props) => {
     : 'false';
 
   const { register, handleSubmit, watch, errors } = useForm({});
-  console.log();
 
   const { navigatorPosition, triggerNavigator }: any = useContext(AuthContext);
   const [inputValue, setInputValue] = React.useState('');
@@ -69,13 +68,15 @@ export const SearchBoxComponent = (props: Props) => {
               style={{ minWidth: '242.5px' }}
               id="outlined-basic"
               label="Enter café"
-              defaultValue={type === 'cafe' && router.query.slug[0]}
+              defaultValue={type === 'cafe' ? pid : ''}
               variant="outlined"
               name="cafe"
               inputRef={register()}
             />
 
             <AutoCompleteInput
+              pid={pid}
+              type={type}
               inputValue={inputValue}
               setInputValue={setInputValue}
               isHeader={isHeader}
