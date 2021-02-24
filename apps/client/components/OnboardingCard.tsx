@@ -9,9 +9,9 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 const faces = [
-  'http://i.pravatar.cc/300?img=1',
+  'https://i.pravatar.cc/300?img=1',
   'https://i.pravatar.cc/300?img=7',
-  'http://i.pravatar.cc/300?img=3',
+  'https://i.pravatar.cc/300?img=3',
   'https://i.pravatar.cc/300?img=12',
 ];
 
