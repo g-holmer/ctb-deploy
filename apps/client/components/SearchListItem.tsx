@@ -17,13 +17,25 @@ interface Props {
 const SearchListItem = (props: Props) => {
   return (
     <ListItem>
-      <ImageWrapper image={props.image}></ImageWrapper>
+      <ImageWrapper>
+        <Image src={props.image} height="150" width="150" objectfit="contain" />
+      </ImageWrapper>
       <ListItemDetails>
         <Typography variant="h5">{props.companyName}</Typography>
         <Typography>
           {props.adress.name} {props.adress.postalCode} {props.adress.city}
         </Typography>
-        <Typography color="secondary">Closed</Typography>
+        {props.openingHours ? (
+          <Box color="success.main">
+            <Typography>
+              Open ({props.openingHours.open}-{props.openingHours.closed})
+            </Typography>
+          </Box>
+        ) : (
+          <Box color="error.main">
+            <Typography>Closed</Typography>
+          </Box>
+        )}
       </ListItemDetails>
       {props.distance && <Box>{props.distance} meters away</Box>}
       <Image
@@ -36,12 +48,14 @@ const SearchListItem = (props: Props) => {
   );
 };
 const ImageWrapper = styled.div`
-  background: ${(props) => `url(${props.image}) no-repeat center`};
-  background-size: contain;
+  display: flex;
   position: relative;
+  img {
+    border-radius: 4px;
+  }
+  align-items: center;
   width: 150px;
   height: 150px;
-  object-fit: contain;
 `;
 
 const ListItem = styled(Box)`

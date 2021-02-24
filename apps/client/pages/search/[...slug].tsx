@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
-
+import moment from 'moment';
 import GoogleMapReact from 'google-map-react';
 import { AuthContext } from '@ctb/auth-context';
 import {
@@ -110,7 +110,6 @@ const SearchPid = () => {
         return item.companyName.toLowerCase().includes(pid.toLowerCase());
       });
   }
-  console.log(filteredData);
 
   if (sortBy && sortBy) {
     filteredData.sort(function (a, b) {
@@ -138,7 +137,27 @@ const SearchPid = () => {
       }
     });
   }
+  const getOpeningHours = (day) => {
+    const date = new Date();
+    const getDay = date.getDay();
+    const today = day[getDay];
+    const { open, closed } = today;
+    let isOpen = false;
+    var format = 'hh:mm:ss';
+    var time = moment();
+    console.log(today);
 
+    const beforeTime = moment(`${open}:00:00`, format);
+    const afterTime = moment(`${closed}:00:00`, format);
+
+    if (time.isBetween(beforeTime, afterTime)) {
+      isOpen = true;
+    } else {
+      isOpen = false;
+    }
+
+    return isOpen ? today : null;
+  };
   return (
     <ThemeProvider theme={theme}>
       {!isDesktop && <SearchBoxComponent isHeader={false} />}
@@ -196,7 +215,7 @@ const SearchPid = () => {
                       phoneNumber={item.phoneNumber}
                       email={item.email}
                       image={item.image}
-                      openingHours={item.openingHours}
+                      openingHours={getOpeningHours(item.openingHours)}
                       adress={item.adress}
                       distance={navigatorPosition && getDistance(item)}
                       key={item.id}
