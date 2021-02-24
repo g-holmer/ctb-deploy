@@ -32,9 +32,6 @@ const useStyles = makeStyles((muiBaseTheme) => ({
     textAlign: 'left',
     padding: muiBaseTheme.spacing(3),
   },
-  divider: {
-    margin: `${muiBaseTheme.spacing(3)}px 0`,
-  },
   heading: {
     fontWeight: 'bold',
   },
@@ -43,9 +40,7 @@ const useStyles = makeStyles((muiBaseTheme) => ({
   },
   avatar: {
     border: '2px solid white',
-    '&:not(:first-of-type)': {
-      marginLeft: -muiBaseTheme.spacing.unit,
-    },
+    '&:not(:first-of-type)': {},
   },
 }));
 
@@ -74,10 +69,15 @@ function OnboardingCard() {
             arrive at the café. With discount code ILOVECOFFEE get a 50%
             discount at your first reservation.
           </Typography>
-          <Divider className={classes.divider} light />
-          <div style={{ display: 'flex' }}>
+          <Divider style={{ margin: '14px 0 14px 0' }} light />
+          <div style={{ display: 'flex', marginLeft: '8px' }}>
             {faces.map((face) => (
-              <Avatar className={classes.avatar} key={face} src={face} />
+              <Avatar
+                style={{ marginLeft: '-8px' }}
+                className={classes.avatar}
+                key={face}
+                src={face}
+              />
             ))}
           </div>
         </CardContent>
