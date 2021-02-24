@@ -6,9 +6,57 @@
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
     "image": "/static/img/marquee/espressohouse.png",
-    "openingHours": {
-      "hours": "9-21"
-    },
+    "openingHours": [
+      {
+        "mon": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "tue": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "wed": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "thu": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "fri": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sat": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sun": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      }
+    ],
     "adress": {
       "name": "Odengatan 94",
       "postalCode": "11322",
@@ -22,9 +70,57 @@
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
     "image": "/static/img/marquee/dunkin.svg",
-    "openingHours": {
-      "hours": "9-21"
-    },
+    "openingHours": [
+      {
+        "mon": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "tue": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "wed": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "thu": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "fri": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sat": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sun": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      }
+    ],
     "adress": {
       "name": "Teknologgatan 4",
       "postalCode": "11322",
@@ -38,9 +134,57 @@
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
     "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
-    "openingHours": {
-      "hours": "9-21"
-    },
+    "openingHours": [
+      {
+        "mon": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "tue": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "wed": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "thu": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "fri": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sat": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sun": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      }
+    ],
     "adress": {
       "name": "Torsgatan 34",
       "postalCode": "11322",
@@ -54,9 +198,57 @@
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
     "image": "/static/img/marquee/tim-hortons.png",
-    "openingHours": {
-      "hours": "9-21"
-    },
+    "openingHours": [
+      {
+        "mon": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "tue": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "wed": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "thu": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "fri": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sat": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sun": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      }
+    ],
     "adress": {
       "name": "Sveavägen 12",
       "postalCode": "11322",
@@ -70,9 +262,57 @@
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
     "image": "/static/img/marquee/caribou-cafe.png",
-    "openingHours": {
-      "hours": "9-21"
-    },
+    "openingHours": [
+      {
+        "mon": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "tue": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "wed": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "thu": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "fri": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sat": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sun": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      }
+    ],
     "adress": {
       "name": "Rörstrandsgatan 44",
       "postalCode": "11322",
@@ -86,9 +326,57 @@
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
     "image": "/static/img/marquee/luckin-coffee.svg",
-    "openingHours": {
-      "hours": "9-21"
-    },
+    "openingHours": [
+      {
+        "mon": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "tue": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "wed": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "thu": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "fri": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sat": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sun": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      }
+    ],
     "adress": {
       "name": "Dalagatan 12",
       "postalCode": "11322",
@@ -102,9 +390,57 @@
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
     "image": "/static/img/marquee/tom-n-toms.jpg",
-    "openingHours": {
-      "hours": "9-21"
-    },
+    "openingHours": [
+      {
+        "mon": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "tue": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "wed": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "thu": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "fri": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sat": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sun": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      }
+    ],
     "adress": {
       "name": "Dalagatan 67",
       "postalCode": "11322",
@@ -118,9 +454,58 @@
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
     "image": "/static/img/marquee/costa-coffee.svg",
-    "openingHours": {
-      "hours": "9-21"
-    },
+
+    "openingHours": [
+      {
+        "mon": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "tue": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "wed": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "thu": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "fri": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sat": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sun": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      }
+    ],
     "adress": {
       "name": "Dalagatan 22",
       "postalCode": "11322",
@@ -134,9 +519,57 @@
     "phoneNumber": "+46434234234",
     "email": "company@email.com",
     "image": "/static/img/marquee/tchibo-coffee.png",
-    "openingHours": {
-      "hours": "9-21"
-    },
+    "openingHours": [
+      {
+        "mon": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "tue": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "wed": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "thu": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "fri": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sat": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      },
+      {
+        "sun": {
+          "open": 9,
+          "closed": 21,
+          "isClosed": false
+        }
+      }
+    ],
     "adress": {
       "name": "Dalagatan 12",
       "postalCode": "11322",
