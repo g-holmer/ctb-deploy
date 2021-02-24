@@ -42,7 +42,7 @@ const useStyles = makeStyles((muiBaseTheme) => ({
     lineHeight: 1.8,
   },
   avatar: {
-    display: 'inline-block',
+    display: 'flex',
     border: '2px solid white',
     '&:not(:first-of-type)': {
       marginLeft: -muiBaseTheme.spacing.unit,
