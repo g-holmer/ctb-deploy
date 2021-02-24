@@ -15,7 +15,6 @@ interface Props {}
 
 const homePage = (props: Props) => {
   const { companiesMockData }: any = useContext(AuthContext);
-  console.log(companiesMockData);
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -34,8 +33,8 @@ const homePage = (props: Props) => {
               <Typography style={{ fontSize: '14px' }}>
                 We help 9 different service entrepreneurs with booking, payment
                 and marketing for their café or restaurant. Try and see how we
-                can <a>help</a> you! Do you rather want to talk to an employee? Call
-                0772-111 111
+                can <a>help</a> you! Do you rather want to talk to an employee?
+                Call 0772-111 111
               </Typography>
             </OnboardingText>
             <ImgWrapper>

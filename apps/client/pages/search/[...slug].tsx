@@ -110,32 +110,33 @@ const SearchPid = () => {
         return item.companyName.toLowerCase().includes(pid.toLowerCase());
       });
   }
+  console.log(filteredData);
+
   if (sortBy && sortBy) {
-    navigatorPosition &&
-      filteredData.sort(function (a, b) {
-        if (sortBy === 'distance') {
-          return getDistance(a) - getDistance(b);
-        } else if (sortBy === 'az' || sortBy === 'za') {
-          let nameA;
-          let nameB;
-          if (sortBy === 'az') {
-            nameA = a.companyName.toUpperCase();
-            nameB = b.companyName.toUpperCase();
-          } else {
-            nameB = a.companyName.toUpperCase();
-            nameA = b.companyName.toUpperCase();
-          }
-
-          if (nameA < nameB) {
-            return -1;
-          }
-          if (nameA > nameB) {
-            return 1;
-          }
-
-          return 0;
+    filteredData.sort(function (a, b) {
+      if (navigatorPosition && sortBy === 'distance') {
+        return getDistance(a) - getDistance(b);
+      } else if (sortBy === 'az' || sortBy === 'za') {
+        let nameA;
+        let nameB;
+        if (sortBy === 'az') {
+          nameA = a.companyName.toUpperCase();
+          nameB = b.companyName.toUpperCase();
+        } else {
+          nameB = a.companyName.toUpperCase();
+          nameA = b.companyName.toUpperCase();
         }
-      });
+
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      }
+    });
   }
 
   return (
