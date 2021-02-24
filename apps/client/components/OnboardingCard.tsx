@@ -76,9 +76,11 @@ function OnboardingCard() {
             discount at your first reservation.
           </Typography>
           <Divider className={classes.divider} light />
-          {faces.map((face) => (
-            <Avatar className={classes.avatar} key={face} src={face} />
-          ))}
+          <div>
+            {faces.map((face) => (
+              <Avatar className={classes.avatar} key={face} src={face} />
+            ))}
+          </div>
         </CardContent>
       </StyledCard>
     </div>
