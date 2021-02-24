@@ -40,6 +40,7 @@ export const SearchBoxComponent = (props: Props) => {
     : 'false';
 
   const { register, handleSubmit, watch, errors } = useForm({});
+  console.log();
 
   const { navigatorPosition, triggerNavigator }: any = useContext(AuthContext);
   const [inputValue, setInputValue] = React.useState('');
@@ -52,7 +53,8 @@ export const SearchBoxComponent = (props: Props) => {
     }
   };
   const isHeader: string = props.isHeader ? 'true' : 'false';
-
+  const pid = router.query.slug && router.query.slug[0];
+  const type = router.query.slug && router.query.slug[1];
   const renderSearchBox = (
     <SearchBox
       isheader={isHeader}
@@ -67,7 +69,7 @@ export const SearchBoxComponent = (props: Props) => {
               style={{ minWidth: '242.5px' }}
               id="outlined-basic"
               label="Enter café"
-              defaultValue={router.query.pid}
+              defaultValue={type === 'cafe' && router.query.slug[0]}
               variant="outlined"
               name="cafe"
               inputRef={register()}

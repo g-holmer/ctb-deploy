@@ -87,7 +87,27 @@ const SearchPid = () => {
     setLng(longitude);
     setZoom(zoom);
   };
+  const getOpeningHours = (day) => {
+    const date = new Date();
+    const getDay = date.getDay();
+    const today = day[getDay];
+    const { open, closed } = today;
+    let isOpen = false;
+    var format = 'hh:mm:ss';
+    var time = moment();
+    console.log(today);
 
+    const beforeTime = moment(`${open}:00:00`, format);
+    const afterTime = moment(`${closed}:00:00`, format);
+
+    if (time.isBetween(beforeTime, afterTime)) {
+      isOpen = true;
+    } else {
+      isOpen = false;
+    }
+
+    return isOpen ? today : null;
+  };
   const getDistance = (item) => {
     return geolib.getDistance(
       {
@@ -110,8 +130,23 @@ const SearchPid = () => {
         return item.companyName.toLowerCase().includes(pid.toLowerCase());
       });
   }
-
-  if (sortBy && sortBy) {
+  if (filter) {
+    filteredData =
+      companiesMockData &&
+      companiesMockData.filter((item) => {
+        const pidItem = item.companyName
+          .toLowerCase()
+          .includes(pid.toLowerCase());
+        if (filter === 'open') {
+          return getOpeningHours(item.openingHours) && pidItem;
+        } else if (filter === 'closed') {
+          return !getOpeningHours(item.openingHours) && pidItem;
+        } else {
+          return pidItem;
+        }
+      });
+  }
+  if (sortBy) {
     filteredData.sort(function (a, b) {
       if (navigatorPosition && sortBy === 'distance') {
         return getDistance(a) - getDistance(b);
@@ -137,27 +172,7 @@ const SearchPid = () => {
       }
     });
   }
-  const getOpeningHours = (day) => {
-    const date = new Date();
-    const getDay = date.getDay();
-    const today = day[getDay];
-    const { open, closed } = today;
-    let isOpen = false;
-    var format = 'hh:mm:ss';
-    var time = moment();
-    console.log(today);
 
-    const beforeTime = moment(`${open}:00:00`, format);
-    const afterTime = moment(`${closed}:00:00`, format);
-
-    if (time.isBetween(beforeTime, afterTime)) {
-      isOpen = true;
-    } else {
-      isOpen = false;
-    }
-
-    return isOpen ? today : null;
-  };
   return (
     <ThemeProvider theme={theme}>
       {!isDesktop && <SearchBoxComponent isHeader={false} />}
