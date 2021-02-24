@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Header } from '@ctb/header';
 import Home from './homePage';
 export function Index(props) {
-  console.log(props);
-
   return (
     <>
       <Home />

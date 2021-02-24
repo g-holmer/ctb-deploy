@@ -1,0 +1,516 @@
+[
+  {
+    "id": 0,
+    "companyName": "Espresso House",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/static/img/marquee/espressohouse.png",
+    "openingHours": [
+      {
+        "day": "Sun",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Mon",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Tue",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Wed",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Thu",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Fri",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Sat",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      }
+    ],
+    "adress": {
+      "name": "Odengatan 94",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  },
+  {
+    "id": 1,
+    "companyName": "Dunkin Donuts",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/static/img/marquee/dunkin.svg",
+    "openingHours": [
+      {
+        "day": "Sun",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Mon",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Tue",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Wed",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Thu",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Fri",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Sat",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      }
+    ],
+    "adress": {
+      "name": "Teknologgatan 4",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  },
+  {
+    "id": 3,
+    "companyName": "Starbucks",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "openingHours": [
+      {
+        "day": "Sun",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Mon",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Tue",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Wed",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Thu",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Fri",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Sat",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      }
+    ],
+    "adress": {
+      "name": "Torsgatan 34",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  },
+  {
+    "id": 4,
+    "companyName": "Tim Hortons",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/static/img/marquee/tim-hortons.png",
+    "openingHours": [
+      {
+        "day": "Sun",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Mon",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Tue",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Wed",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Thu",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Fri",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Sat",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      }
+    ],
+    "adress": {
+      "name": "Sveavägen 12",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  },
+  {
+    "id": 5,
+    "companyName": "Waynes Coffee",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/static/img/marquee/caribou-cafe.png",
+    "openingHours": [
+      {
+        "day": "Sun",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Mon",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Tue",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Wed",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Thu",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Fri",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Sat",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      }
+    ],
+    "adress": {
+      "name": "Rörstrandsgatan 44",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  },
+  {
+    "id": 6,
+    "companyName": "Luckin Coffee",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/static/img/marquee/luckin-coffee.svg",
+    "openingHours": [
+      {
+        "day": "Sun",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Mon",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Tue",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Wed",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Thu",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Fri",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Sat",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      }
+    ],
+    "adress": {
+      "name": "Dalagatan 12",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  },
+  {
+    "id": 7,
+    "companyName": "Tom 'N Toms",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/static/img/marquee/tom-n-toms.jpg",
+    "openingHours": [
+      {
+        "day": "Sun",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Mon",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Tue",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Wed",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Thu",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Fri",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Sat",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      }
+    ],
+    "adress": {
+      "name": "Dalagatan 67",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  },
+  {
+    "id": 8,
+    "companyName": "Costa Café",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/static/img/marquee/costa-coffee.svg",
+
+    "openingHours": [
+      {
+        "day": "Sun",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Mon",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Tue",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Wed",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Thu",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Fri",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Sat",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      }
+    ],
+    "adress": {
+      "name": "Dalagatan 22",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  },
+  {
+    "id": 9,
+    "companyName": "Tchibo",
+    "vatNr": 32323,
+    "phoneNumber": "+46434234234",
+    "email": "company@email.com",
+    "image": "/static/img/marquee/tchibo-coffee.png",
+    "openingHours": [
+      {
+        "day": "Sun",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Mon",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Tue",
+        "open": 13,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Wed",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Thu",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Fri",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      },
+      {
+        "day": "Sat",
+        "open": 9,
+        "closed": 21,
+        "isClosed": false
+      }
+    ],
+    "adress": {
+      "name": "Dalagatan 12",
+      "postalCode": "11322",
+      "city": "Stockholm"
+    }
+  }
+]

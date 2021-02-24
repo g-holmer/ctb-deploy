@@ -73,16 +73,16 @@ export const AuthContextProvider = (props: Props) => {
     router.events.on('routeChangeComplete', () => {
       window.scrollTo(0, 0);
     });
-    fetch('/companies.json')
+    fetch('https://api.npoint.io/c07c4cf6f0190a621db1')
       .then((data) => data.json())
       .then((data) => {
         data.map(async (item) => {
-          //   const response = await Geocode.fromAddress(
-          //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
-          //   ); //IMPORTANT DONT FORGET TO UNCOMMENT THIS
+          const response = await Geocode.fromAddress(
+            `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+          );
 
-          //   const { lat, lng } =
-          //     response && response.results[0].geometry.location;
+          const { lat, lng } =
+            response && response.results[0].geometry.location;
 
           const options = {
             id: item.id,
@@ -94,8 +94,8 @@ export const AuthContextProvider = (props: Props) => {
             openingHours: item.openingHours,
             adress: item.adress,
             coordinates: {
-              lat: 59, //IMPORTANT, DONT FORGET TO CHANGE THIS TO LAT LNG LATER
-              lng: 17,
+              lat,
+              lng,
             },
           };
           setCompaniesMockData((prevState) => [...prevState, options]);

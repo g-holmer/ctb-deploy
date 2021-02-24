@@ -36,6 +36,8 @@ export interface AutoCompleteInputProps {
   isHeader: string;
   inputValue: any;
   setInputValue: any;
+  pid: string;
+  type: string;
 }
 interface PlaceType {
   description: string;
@@ -56,7 +58,19 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
   const classes = useStyles();
   const inputValue = props.inputValue;
   const setInputValue = props.setInputValue;
-  const [value, setValue] = React.useState<PlaceType | null>(null);
+  const [value, setValue] = React.useState<PlaceType | null>({
+    description: props.type === 'location' ? props.pid : '',
+    structured_formatting: {
+      main_text: 'Surat',
+      main_text_matched_substrings: [
+        {
+          length: 1,
+          offset: 0,
+        },
+      ],
+      secondary_text: 'Gujarat, India',
+    },
+  });
 
   const [options, setOptions] = React.useState<PlaceType[]>([]);
   const loaded = React.useRef(false);

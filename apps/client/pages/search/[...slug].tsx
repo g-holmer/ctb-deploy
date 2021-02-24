@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
-
+import moment from 'moment';
 import GoogleMapReact from 'google-map-react';
 import { AuthContext } from '@ctb/auth-context';
 import {
@@ -87,7 +87,27 @@ const SearchPid = () => {
     setLng(longitude);
     setZoom(zoom);
   };
+  const getOpeningHours = (day) => {
+    const date = new Date();
+    const getDay = date.getDay();
+    const today = day[getDay];
+    const { open, closed } = today;
+    let isOpen = false;
+    var format = 'hh:mm:ss';
+    var time = moment();
+    console.log(today);
 
+    const beforeTime = moment(`${open}:00:00`, format);
+    const afterTime = moment(`${closed}:00:00`, format);
+
+    if (time.isBetween(beforeTime, afterTime)) {
+      isOpen = true;
+    } else {
+      isOpen = false;
+    }
+
+    return isOpen ? today : null;
+  };
   const getDistance = (item) => {
     return geolib.getDistance(
       {
@@ -110,32 +130,47 @@ const SearchPid = () => {
         return item.companyName.toLowerCase().includes(pid.toLowerCase());
       });
   }
-  if (sortBy && sortBy) {
-    navigatorPosition &&
-      filteredData.sort(function (a, b) {
-        if (sortBy === 'distance') {
-          return getDistance(a) - getDistance(b);
-        } else if (sortBy === 'az' || sortBy === 'za') {
-          let nameA;
-          let nameB;
-          if (sortBy === 'az') {
-            nameA = a.companyName.toUpperCase();
-            nameB = b.companyName.toUpperCase();
-          } else {
-            nameB = a.companyName.toUpperCase();
-            nameA = b.companyName.toUpperCase();
-          }
-
-          if (nameA < nameB) {
-            return -1;
-          }
-          if (nameA > nameB) {
-            return 1;
-          }
-
-          return 0;
+  if (filter) {
+    filteredData =
+      companiesMockData &&
+      companiesMockData.filter((item) => {
+        const pidItem = item.companyName
+          .toLowerCase()
+          .includes(pid.toLowerCase());
+        if (filter === 'open') {
+          return getOpeningHours(item.openingHours) && pidItem;
+        } else if (filter === 'closed') {
+          return !getOpeningHours(item.openingHours) && pidItem;
+        } else {
+          return pidItem;
         }
       });
+  }
+  if (sortBy) {
+    filteredData.sort(function (a, b) {
+      if (navigatorPosition && sortBy === 'distance') {
+        return getDistance(a) - getDistance(b);
+      } else if (sortBy === 'az' || sortBy === 'za') {
+        let nameA;
+        let nameB;
+        if (sortBy === 'az') {
+          nameA = a.companyName.toUpperCase();
+          nameB = b.companyName.toUpperCase();
+        } else {
+          nameB = a.companyName.toUpperCase();
+          nameA = b.companyName.toUpperCase();
+        }
+
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      }
+    });
   }
 
   return (
@@ -195,7 +230,7 @@ const SearchPid = () => {
                       phoneNumber={item.phoneNumber}
                       email={item.email}
                       image={item.image}
-                      openingHours={item.openingHours}
+                      openingHours={getOpeningHours(item.openingHours)}
                       adress={item.adress}
                       distance={navigatorPosition && getDistance(item)}
                       key={item.id}
