@@ -30,10 +30,10 @@ const useStyles = makeStyles((muiBaseTheme) => ({
   },
   content: {
     textAlign: 'left',
-    padding: muiBaseTheme.spacing.unit * 3,
+    padding: muiBaseTheme.spacing(3),
   },
   divider: {
-    margin: `${muiBaseTheme.spacing.unit * 3}px 0`,
+    margin: `${muiBaseTheme.spacing(3)}px 0`,
   },
   heading: {
     fontWeight: 'bold',
