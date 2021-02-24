@@ -42,7 +42,6 @@ const useStyles = makeStyles((muiBaseTheme) => ({
     lineHeight: 1.8,
   },
   avatar: {
-    display: 'flex',
     border: '2px solid white',
     '&:not(:first-of-type)': {
       marginLeft: -muiBaseTheme.spacing.unit,
@@ -76,7 +75,7 @@ function OnboardingCard() {
             discount at your first reservation.
           </Typography>
           <Divider className={classes.divider} light />
-          <div>
+          <div style={{ display: 'flex' }}>
             {faces.map((face) => (
               <Avatar className={classes.avatar} key={face} src={face} />
             ))}
